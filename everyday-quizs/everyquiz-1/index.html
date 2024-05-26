@@ -13,34 +13,36 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://smallbat.cn/hello-world/"/>
+    <link rel="canonical" href="http://smallbat.cn/everyday-quizs/everyquiz-1/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+        <meta name="description" content="今天的力扣签到题为 260. 只出现一次的数字III 给你一个整数数组nums，其中恰好有两个元素只出现一次，其余所有元素均出现两次。找出只出现一次的那两个元素。你可以按任意顺序返回答案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://smallbat.cn/hello-world/index.html">
+<meta property="og:title" content="每日一题#1 [位运算]">
+<meta property="og:url" content="http://smallbat.cn/everyday-quizs/everyquiz-1/index.html">
 <meta property="og:site_name" content="蝠池書閤">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="今天的力扣签到题为 260. 只出现一次的数字III 给你一个整数数组nums，其中恰好有两个元素只出现一次，其余所有元素均出现两次。找出只出现一次的那两个元素。你可以按任意顺序返回答案">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-25T00:58:42.061Z">
-<meta property="article:modified_time" content="2024-05-25T00:58:42.061Z">
+<meta property="article:published_time" content="2023-10-16T15:55:00.000Z">
+<meta property="article:modified_time" content="2024-05-26T13:02:53.723Z">
 <meta property="article:author" content="蝙蝠猫BatBattery">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="计算机">
 <meta name="twitter:card" content="summary">
     
     
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="/images/redefine-favicon.ico" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.ico">
-    <meta name="theme-color" content="#6A5ACD">
+    <meta name="theme-color" content="#BA55D3">
     <link rel="shortcut icon" href="/images/redefine-favicon.ico">
     <!--- Page Info-->
     
     <title>
         
-            Hello World -
+            每日一题#1 [位运算] -
         
         蝠池茶室
     </title>
@@ -221,14 +223,18 @@
 
     <!--- Font Part-->
     
+        <link href="https://cdn.jsdelivr.net/npm/cn-fontsource-yozai/font.css" rel="stylesheet">
     
+    
+    
+        <link href="https://cdn.jsdelivr.net/npm/cn-fontsource-yozai/font.css" rel="stylesheet">
     
     
 
 
     <script id="hexo-configurations">
     window.config = {"hostname":"smallbat.cn","root":"/","language":"zh-CN","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":false,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["Tomori","cite"]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":true,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"idontknow"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#6A5ACD","secondary":"#FF7F50","default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":"Yozai Medium","url":"https://cdn.jsdelivr.net/npm/cn-fontsource-yozai-medium/font.css"},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":false,"site_uv":false,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.jpg","dark":"/images/wallhaven-wqery6-dark.jpg"},"title":"✿Fortitude✿Confident✿Calm✿","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn?max_length=22&c=a&c=b&c=d&c=h&c=i&c=k"},"typing_speed":100,"backing_speed":0,"starting_delay":500,"backing_delay":1500000,"loop":false,"smart_backspace":true},"text_color":{"light":"#DB7093","dark":"#D2691E"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null,"fa-brands fa-bilibili":"https://space.bilibili.com/104526845","fa-brands fa-steam":"https://steamcommunity.com/id/BattLantern/","fa-solid fa-walkie-talkie":"https://leetcode.cn/u/batbattery/"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#a2c5a6","right":"#d3b4e2","transparency":55},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Books":{"icon":"fa-solid fa-book","submenus":{"categories":"/categories","tags":"/tags","shuoshuo":"/shuoshuo","photos":"/photos"}},"About":{"icon":"fa-regular fa-user","submenus":{"mysite":"/mysite","introduce":"/introduce"}},"Status":{"path":"https://status.ohevan.com","icon":"fa-solid fa-circle-exclamation"},"Github":{"path":"https://github.com/BatLantern","icon":"fa-brands fa-github"},"Chests":{"icon":"fa-solid fa-parachute-box","submenus":{"friends":"/mates","linkk":"/linkk"}}},"search":{"enable":false,"preload":true},"local_search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"个人随笔/学习日记","show_on_mobile":true,"links":{"categories":{"path":"/categories","icon":"fa-solid fa-layer-group"},"tags":{"path":"/tags","icon":"fa-solid fa-tag"},"shuoshuo":{"path":"/shuoshuo","icon":"fa-solid fa-mug-hot"},"photos":{"path":"/photos","icon":"fa-solid fa-photo-film"},"friends":{"path":"/mates","icon":"fa-solid fa-link"},"linkk":{"path":"/linkk","icon":"fa-solid fa-box"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/5/25 08:00:00"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":false,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":["Tomori","cite"]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"idontknow"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#BA55D3","secondary":"#FF7F50","default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Yozai","url":"https://cdn.jsdelivr.net/npm/cn-fontsource-yozai/font.css"},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":false,"site_uv":false,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.jpg","dark":"/images/wallhaven-wqery6-dark.jpg"},"title":"✿Fortitude✿Confident✿Calm✿","subtitle":{"text":["Loading..."],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn?max_length=22&c=a&c=b&c=d&c=h&c=i&c=k"},"typing_speed":100,"backing_speed":0,"starting_delay":500,"backing_delay":1500000,"loop":false,"smart_backspace":true},"text_color":{"light":"#E6E6FA","dark":"#D2691E"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":"Yozai","url":"https://cdn.jsdelivr.net/npm/cn-fontsource-yozai/font.css"},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null,"fa-brands fa-bilibili":"https://space.bilibili.com/104526845","fa-brands fa-steam":"https://steamcommunity.com/id/BattLantern/","fa-solid fa-walkie-talkie":"https://leetcode.cn/u/batbattery/"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#a2c5a6","right":"#d3b4e2","transparency":55},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Books":{"icon":"fa-solid fa-book","submenus":{"Categories":"/categories","Tags":"/tags","Shuoshuo":"/shuoshuo","Photos":"/photos"}},"About":{"icon":"fa-regular fa-user","submenus":{"Mysite":"/mysite","Introduce":"/introduce"}},"Chests":{"icon":"fa-solid fa-parachute-box","submenus":{"Friends":"/mates","Links":"/links"}},"Status":{"path":"https://status.ohevan.com","icon":"fa-solid fa-circle-exclamation"},"Github":{"path":"https://github.com/BatLantern","icon":"fa-brands fa-github"}},"search":{"enable":true,"preload":true,"field":"post","content":true,"format":"html"}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"个人随笔/学习日记","show_on_mobile":false,"links":{"categories":{"path":"/categories","icon":"fa-solid fa-layer-group"},"tags":{"path":"/tags","icon":"fa-solid fa-tag"},"shuoshuo":{"path":"/shuoshuo","icon":"fa-solid fa-mug-hot"},"photos":{"path":"/photos","icon":"fa-solid fa-photo-film"},"friends":{"path":"/mates","icon":"fa-solid fa-link"},"links":{"path":"/links","icon":"fa-solid fa-box"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2024/5/25 08:00:00"};
     window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
     window.data = {"masonry":true};
   </script>
@@ -414,6 +420,39 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-parachute-box fa-fw"></i>
+                                    宝箱
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/mates">
+                                                    友情链接
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/links">
+                                                    茶室推荐
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
                                 <a class=""
                                    target="_blank" rel="noopener" href="https://status.ohevan.com"
                                         >
@@ -443,44 +482,18 @@
                                 
                             </li>
                     
-                        
-                            
-
-                            <li class="navbar-item">
-                                <!-- Menu -->
-                                <a class="has-dropdown"
-                                   href="#"
-                                        onClick=&#34;return false;&#34;>
-                                    <i class="fa-solid fa-parachute-box fa-fw"></i>
-                                    宝箱
-                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
-                                </a>
-
-                                <!-- Submenu -->
-                                
-                                    <ul class="sub-menu">
-                                        
-                                            <li>
-                                                <a href="/mates">
-                                                    友情链接
-                                                </a>
-                                            </li>
-                                        
-                                            <li>
-                                                <a href="/linkk">
-                                                    收藏
-                                                </a>
-                                            </li>
-                                        
-                                    </ul>
-                                
-                            </li>
                     
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
                     
                 </ul>
             </div>
             <!-- Mobile -->
             <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
                 
                 <div class="icon-item navbar-bar">
                     <div class="navbar-bar-middle"></div>
@@ -614,6 +627,40 @@
                 
                     
 
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Chests"
+                        >
+                            <span>
+                                宝箱
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Chests">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/mates">友情链接</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/links">茶室推荐</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
                         <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
@@ -651,114 +698,18 @@
                         
                     </li>
             
-                
-                    
-
-                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
-                        
-                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
-                             navbar-data-toggle="submenu-Chests"
-                        >
-                            <span>
-                                宝箱
-                            </span>
-                            
-                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
-                            
-                        </div>
-                        
-
-                        
-                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Chests">
-                                
-                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                        <a class=" text-third-text-color text-xl"
-                                           href="/mates">友情链接</a>
-                                    </div>
-                                
-                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
-                                        <a class=" text-third-text-color text-xl"
-                                           href="/linkk">收藏</a>
-                                    </div>
-                                
-                            </div>
-                        
-                    </li>
-            
 
             
-            
-                
-                    
-                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
-                           href="/categories"
-                        >
-                            <span>类别</span>
-                            <i class="fa-solid fa-layer-group fa-sm fa-fw"></i>
-                        </a>
-                    </li>
-                
-                    
-                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
-                           href="/tags"
-                        >
-                            <span>标签</span>
-                            <i class="fa-solid fa-tag fa-sm fa-fw"></i>
-                        </a>
-                    </li>
-                
-                    
-                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
-                           href="/shuoshuo"
-                        >
-                            <span>树洞</span>
-                            <i class="fa-solid fa-mug-hot fa-sm fa-fw"></i>
-                        </a>
-                    </li>
-                
-                    
-                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
-                           href="/photos"
-                        >
-                            <span>图集</span>
-                            <i class="fa-solid fa-photo-film fa-sm fa-fw"></i>
-                        </a>
-                    </li>
-                
-                    
-                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
-                           href="/mates"
-                        >
-                            <span>友情链接</span>
-                            <i class="fa-solid fa-link fa-sm fa-fw"></i>
-                        </a>
-                    </li>
-                
-                    
-                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
-                           href="/linkk"
-                        >
-                            <span>收藏</span>
-                            <i class="fa-solid fa-box fa-sm fa-fw"></i>
-                        </a>
-                    </li>
-                
             
         </ul>
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">类别</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
@@ -787,8 +738,12 @@
 
         <div class="article-title relative w-full">
             
-                <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">Hello World</h1>
+                
+                
+                <img src="https://www.freeimg.cn/i/2023/10/16/652cf4473f1de.jpg" alt="每日一题#1 [位运算]" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75"/>
+                
+                <div class="w-full flex items-center absolute bottom-0 justify-start">
+                    <h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-bold backdrop-blur-lg rounded-xl border border-border-color ">每日一题#1 [位运算]</h1>
                 </div>
             
             </div>
@@ -809,37 +764,64 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-05-25 08:58:42</span>
-        <span class="mobile">2024-05-25 08:58:42</span>
+        <span class="desktop">2023-10-16 23:55</span>
+        <span class="mobile">2023-10-16 23:55</span>
         <span class="hover-info">置入</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-05-25 08:58:42</span>
-            <span class="mobile">2024-05-25 08:58:42</span>
+            <span class="desktop">2024-05-26 21:02:53</span>
+            <span class="mobile">2024-05-26 21:02:53</span>
             <span class="hover-info">翻新</span>
         </span>
     
 
     
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/everyday-quizs/">每日一题</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>75 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.5k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 分钟</span>
         </span>
     
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
     
 </div>
 
@@ -852,19 +834,131 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo</a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting</a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+            
+  <div class="note-large pink">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>寄语</p>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+    </div>
+    <div class="notel-content">
+      <p><strong>时光流转，愿你终有一天能和你重要的人重逢。</strong><br> 　　　　　　　　  <em>——艾拉《可塑性记忆》</em></p>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+    </div>
+  </div>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+<hr>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>从今天开始会写blog，主要是记笔记以防后期忘记，同时也会记一些重要的知识点。</strong></p>
+<p><strong>好了，让我们开始吧。</strong>(纯小白，大佬轻喷)</p>
+<hr>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣签到题为<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/single-number-iii/description/"><em>260. 只出现一次的数字 III</em></a>，题目如下：</p>
+<blockquote>
+<p>给你一个整数数组 <code>nums</code>，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 <strong>任意顺序</strong> 返回答案。</p>
+<p>你必须设计并实现线性时间复杂度的算法且仅使用常量额外空间来解决此问题。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,1,3,2,5]</span><br><span class="line">输出：[3,5]</span><br><span class="line">解释：[5, 3] 也是有效的答案。</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<p>看到这道题，我脑子里第一个想法就是用ide的内置函数 <del>(开摆)</del> 。</p>
+<p>在C#中有个叫count()的函数，它的功能是<strong>计算序列中的元素数量</strong>。<br>如果不填参数，将返回元素的个数。</p>
+<p>若填写参数，这个函数的功能就会变成<strong>计算序列中满足某个条件时的元素数量</strong>。<br>这个时候，我就可以用这个函数来寻找需要的结果。</p>
+<hr>
+<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：内置函数"><a href="#方法一：内置函数" class="headerlink" title="方法一：内置函数"></a>方法一：内置函数</h4><p>代码如下 :  <strong><code>时间复杂度：O(n)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span>[] <span class="title">SingleNumber</span>(<span class="params"><span class="built_in">int</span>[] nums</span>)</span> &#123;</span><br><span class="line">　<span class="built_in">int</span>[] answer = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];</span><br><span class="line">　<span class="built_in">int</span> j = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">//遍历整个数组并找到只出现一次的值</span></span><br><span class="line">　<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.Length; i++) &#123;</span><br><span class="line">　　<span class="built_in">int</span> count = nums.Count(n =&gt; n == nums[i]);</span><br><span class="line">    <span class="comment">//有则存入answer数组</span></span><br><span class="line">　　<span class="keyword">if</span>(count == <span class="number">1</span>) &#123;</span><br><span class="line">　　　answer[j] = nums[i];</span><br><span class="line">　　　j++;</span><br><span class="line">　　&#125;</span><br><span class="line">　&#125;</span><br><span class="line">　<span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment</a></p>
+<p>这里使用了内置函数，让系统帮我找，也没什么好说的。</p>
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p>非常耗时间 <strong><code>(2748ms)</code></strong> 和空间 <strong><code>(44.10MB)</code></strong></p>
+
+  </div>
+
+<hr>
+<h4 id="方法二：哈希集合"><a href="#方法二：哈希集合" class="headerlink" title="方法二：哈希集合"></a>方法二：哈希集合</h4><p>基于内置函数真的太慢的情况下，我想了一个别的方法。</p>
+<p>我采用了哈希集合，它采用了一种<strong>数据结构</strong>来存储数字频率，如果要查询频率，它完全可以在<strong>常数时间内</strong>返回结果。</p>
+<p>所以先创建一个哈希集合，如果在这个哈希集合中<strong>能找到</strong>这个数字，则说明这个数字出现了<strong>两次</strong>；反之如果没寻找到，则说明这个数字只出现了<strong>一次</strong>。</p>
+<p>代码如下 :  <strong><code>时间复杂度：O(n)</code></strong> <strong><code>空间复杂度：O(n)</code></strong></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span>[] <span class="title">SingleNumber</span>(<span class="params"><span class="built_in">int</span>[] nums</span>)</span> &#123;</span><br><span class="line">　HashSet&lt;<span class="built_in">int</span>&gt; numsCounts = <span class="keyword">new</span>();</span><br><span class="line">　<span class="comment">//遍历整个数组</span></span><br><span class="line">　<span class="keyword">foreach</span> (<span class="built_in">int</span> i <span class="keyword">in</span> nums) &#123;</span><br><span class="line">　　<span class="comment">//如果在集合中找到了重复元素，就把它剔除；如果没找到就添加进去</span></span><br><span class="line">　　<span class="keyword">if</span>(numsCounts.Contains(i))</span><br><span class="line">　　　numsCounts.Remove(i);</span><br><span class="line">　　<span class="keyword">else</span></span><br><span class="line">　　　numsCounts.Add(i);</span><br><span class="line">　　&#125;</span><br><span class="line">　<span class="comment">//以数组形式返回</span></span><br><span class="line">　<span class="keyword">return</span> numsCounts.ToArray();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>优化</p>
+
+    </div>
+    <div class="notel-content">
+      <p>因为哈希集合是不包含<strong>重复</strong>元素的集合，所以如果有重复元素添加时他会<strong>跳过</strong>。<br>Add方法中，如果添加的元素是重复的，他不会添加，只会返回一个false，告诉你添加失败</p>
+
+    </div>
+  </div>
+
+<p>所以就可以用这个性质对 <code>Foreach</code>进行优化，把循环内的代码变成只有一个if判断</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//若添加失败(有重复)则把这个数字剔除</span></span><br><span class="line"><span class="keyword">if</span>(!numsCounts.Add(i))</span><br><span class="line">      numsCounts.Remove(i);</span><br></pre></td></tr></table></figure></div>
+
+<p>通过这种方法得出的结果和优化前差不多，但是更简洁。</p>
+
+  <div class="note p-4 mb-4 rounded-small warning">
+    <p>通过这种方法得出的结果，耗时 <strong><code>(152ms)</code></strong> 和空间 **<code>(42.55MB)</code>**。</p>
+
+  </div>
+
+<hr>
+<h4 id="方法三：位运算"><a href="#方法三：位运算" class="headerlink" title="方法三：位运算"></a>方法三：位运算</h4><p>因为这个题目的标签里面有<strong>位运算</strong>，所以我一直在想怎么用，但是一整天都没想出来。</p>
+<p>怎么办呢？那只好去翻翻题解了。</p>
+
+  <div class="note p-4 mb-4 rounded-small info">
+    <p>X⊕X&#x3D;0(相同数字会抵消) 　　　 　　 0⊕X&#x3D;X(0与某数异或等于那个数)</p>
+
+  </div>
+
+<p>异或运算的原理如上所示，现在将所有数字异或，必定得到一个<strong>不为0</strong>的数。</p>
+<p>若输入为 <code>[1, 2, 1, 3, 2, 5]</code>，则他们的异或结果应该是3^5(这两个数字就是我们要求的答案)</p>
+<p>然后将这个得出来的数的<strong>补码</strong>(一种负数二进制形式)和它自己(也就是刚刚异或的结果)进行<strong>与运算</strong>。</p>
+<p>这样可以得到只有最低位是1的二进制码，这个位就是两个只出现一次的数字在二进制表示上的差异。</p>
+<p>以下为步骤表格：看表格，3和5从右往左第一个差异是不是<strong>第二位</strong>不一样？所以<strong>异或结果的补码</strong>只有第二位为1。</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>步骤&#x2F;数字</th>
+<th>3</th>
+<th>5</th>
+<th>3^5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>二进制码</td>
+<td>011</td>
+<td>101</td>
+<td>110</td>
+</tr>
+<tr>
+<td>反码</td>
+<td>100</td>
+<td>010</td>
+<td>001</td>
+</tr>
+<tr>
+<td>补码</td>
+<td>101</td>
+<td>011</td>
+<td>010</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>现在就可以对原数组的每一个数进行<strong>与运算</strong>后分类，有0的分为一组，有1的分为一组。</p>
+<p>以下是分类结果：针对输入为 <code>[1, 2, 1, 3, 2, 5]</code>的为例</p>
+<ul>
+<li>1：2, 2, 3</li>
+<li>0：1, 1, 5</li>
+</ul>
+<p>经过”分治”的过程，问题转化成了简单的 **<code>&quot;在偶数次数字里找到只出现一次的元素&quot;</code>**。</p>
+<p>现在只要遵循异或的运算规则，将一个类总的所有元素全部<strong>异或</strong>，偶数次的元素会被<strong>相互抵消</strong>，然后就会剩下只出现一次的元素了。</p>
+<p>代码如下 :  <strong><code>时间复杂度：O(n)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span>[] <span class="title">SingleNumber</span>(<span class="params"><span class="built_in">int</span>[] nums</span>)</span> &#123;</span><br><span class="line">　<span class="comment">//定义</span></span><br><span class="line">　<span class="built_in">int</span> numsxor = <span class="number">0</span>;</span><br><span class="line">　<span class="built_in">int</span>[] res = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];</span><br><span class="line">　<span class="comment">//所有元素异或</span></span><br><span class="line">　<span class="keyword">foreach</span> (<span class="built_in">int</span> num <span class="keyword">in</span> nums)</span><br><span class="line">　　numsxor ^= num;</span><br><span class="line">　<span class="comment">//异或结果和补码与运算，得到最低位为1的二进制码</span></span><br><span class="line">　<span class="comment">//就是取最右边的那个1，这个1保留，其他全改成0</span></span><br><span class="line">　<span class="built_in">int</span> answer = numsxor &amp; (-numsxor);</span><br><span class="line">　<span class="comment">//用这个码对数组分类</span></span><br><span class="line">　<span class="keyword">foreach</span> (<span class="built_in">int</span> num <span class="keyword">in</span> nums)</span><br><span class="line">　&#123;</span><br><span class="line">　　<span class="comment">//全部异或抵消得到结果</span></span><br><span class="line">　　<span class="keyword">if</span> ((answer &amp; num) == <span class="number">0</span>)</span><br><span class="line">　　　res[<span class="number">0</span>] ^= num;</span><br><span class="line">　　<span class="keyword">else</span></span><br><span class="line">　　　res[<span class="number">1</span>] ^= num;</span><br><span class="line">　&#125;</span><br><span class="line">　<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>通过这种方法得出的结果，耗时 <strong><code>(132ms)</code></strong> 和空间 **<code>(42.39MB)</code>**。</p>
+<hr>
+<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3><p>今天是第一天哦，希望自己能坚持下去。</p>
+<hr>
+<p><strong>笔记完毕 编辑完毕时间CST 10.16 23:55</strong></p>
 
         </div>
 
@@ -872,18 +966,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Hello World</li>
+        <li><strong>标题:</strong> 每日一题#1 [位运算]</li>
         <li><strong>作者:</strong> 蝙蝠猫BatBattery</li>
         <li><strong>置入于
-                :</strong> 2024-05-25 08:58:42</li>
+                :</strong> 2023-10-16 23:55:00</li>
         
             <li>
                 <strong>翻新于
-                    :</strong> 2024-05-25 08:58:42
+                    :</strong> 2024-05-26 21:02:53
             </li>
         
         <li>
-            <strong>链接:</strong> https://smallbat.cn/hello-world/
+            <strong>链接:</strong> https://smallbat.cn/everyday-quizs/everyquiz-1/
         </li>
         <li>
             <strong>
@@ -892,7 +986,7 @@
             
 
             
-                本文采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+                懒得写版权,本篇只是学习笔记.转载,引用随意,添加来源即可.
             
         </li>
     </ul>
@@ -901,6 +995,18 @@
             </div>
         
 
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">#计算机</a>&nbsp;
+                    </li>
+                
+            </ul>
         
 
         
@@ -916,8 +1022,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">本层目录</div>
-        <div class="page-title">Hello World</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <div class="page-title">每日一题#1 [位运算]</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%92%8C%E6%80%9D%E8%B7%AF"><span class="nav-text">方法和思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD%E5%92%8C%E7%95%99%E8%A8%80"><span class="nav-text">结语和留言</span></a></li></ol>
 
     </div>
 </div>
@@ -956,18 +1062,12 @@
                     </span>
                     
                         <span>
-                            藏书共 75 字
+                            藏书共 1.5k 字
                         </span>
                     
                 </p>
             
         </div>
-        
-            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
-            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
-                
-                
-            </div>
         
         <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
             <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
@@ -1041,6 +1141,10 @@
         
 
         
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="fa-regular fa-arrow-up"></i>
+            </li>
+        
 
         <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
             <i class="fa-regular fa-arrow-down"></i>
@@ -1052,11 +1156,6 @@
             <i class="fa-regular fa-cog fa-spin"></i>
         </li>
         
-            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
         
     </ul>
 </div>
@@ -1067,6 +1166,35 @@
     <img src="">
 </div>
 
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="书架查询..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
     
 
@@ -1125,6 +1253,10 @@
 
 <script src="/js/layouts/categoryList.js" type="module"></script>
 
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
 
 
 
