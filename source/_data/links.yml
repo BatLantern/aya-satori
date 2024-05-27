@@ -1,0 +1,9 @@
+- links_category: appweb # 分类名
+  has_thumbnail: false # 是否有预览图（true/false)
+  list: 
+    - name: Hitokoto # 名字
+      link: https://hitokoto.cn # 链接
+      description: 一言语句官网 # 描述
+      avatar: \images\th.png # 头像
+      thumbnail: # 预览图（has_thumbnail 为 true 时才需要）
+
