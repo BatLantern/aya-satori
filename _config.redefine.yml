@@ -39,7 +39,7 @@ colors:
   # Secondary color (TBD)
   secondary: "#FF7F50"
   # 站点默认模式 日间/夜间模式
-  default_mode: light # light, dark
+  default_mode: dark # light, dark
 # COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -122,7 +122,7 @@ home_banner:
     text: [Loading...] # subtitle text, array
     hitokoto:  # 一言语句接口
       enable: true # Whether to enable hitokoto
-      api: https://v1.hitokoto.cn?max_length=22&c=a&c=b&c=d&c=h&c=i&c=k # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
+      api: https://v1.hitokoto.cn?max_length=20&c=a&c=b&c=d&c=h&c=i&c=k # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
     typing_speed: 100 # 打字速度
     backing_speed: 0 # 退格速度（0为停止语句切换）
     starting_delay: 500 # 开始请求延时（0.5秒）
@@ -131,8 +131,8 @@ home_banner:
     smart_backspace: true # 智能退格
   # Color of home banner text
   text_color: 
-    light: "#E6E6FA" # 日间模式首页文字颜色（可改）
-    dark: "#D2691E" # 夜间模式首页文字颜色（可改）
+    light: "#D8BFD8" # 日间模式首页文字颜色（可改）
+    dark: "#FF7F50" # 夜间模式首页文字颜色（可改）
   # 正文字体大小，字体库（不用改）
   text_style: 
     # Title font size
