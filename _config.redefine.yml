@@ -51,13 +51,13 @@ global:
     # 自定义站点中文字体库
     chinese: 
       enable: true # Whether to enable custom chinese fonts
-      family: 975Maru SC # Font family
-      url: https://cdn.jsdelivr.net/npm/cn-fontsource-975-maru-sc-regular/font.css # Font URL to CSS file
+      family: MaoKenTangYuan (beta) # Font family
+      url: https://chinese-fonts-cdn.deno.dev/chinesefonts3/packages/mkwtyt/dist/MaoKenTangYuan/result.css # Font URL to CSS file
     # 自定义站点英文字体库
     english: 
       enable: true # Whether to enable custom english fonts
-      family: 975Maru SC # Font family
-      url: https://cdn.jsdelivr.net/npm/cn-fontsource-975-maru-sc-regular/font.css # Font URL to CSS file
+      family: MaoKenTangYuan (beta) # Font family
+      url: https://chinese-fonts-cdn.deno.dev/chinesefonts3/packages/mkwtyt/dist/MaoKenTangYuan/result.css # Font URL to CSS file
   # 文章宽度（不用动）
   content_max_width: 1000px
   # 边栏宽度（不用动）
@@ -146,9 +146,9 @@ home_banner:
     # Whether to enable custom font
     enable: true
     # Font family
-    family: 975Maru SC
+    family: MaoKenTangYuan (beta)
     # URL to font CSS file
-    url: https://cdn.jsdelivr.net/npm/cn-fontsource-975-maru-sc-regular/font.css
+    url: https://chinese-fonts-cdn.deno.dev/chinesefonts3/packages/mkwtyt/dist/MaoKenTangYuan/result.css
   # 下方社交链接
   social_links:
     # 总开关
@@ -182,7 +182,7 @@ navbar:
   color:
     left: "#a2c5a6" #左端
     right: "#d3b4e2"  #右端
-    transparency: 55 #不透明度
+    transparency: 60 #不透明度
   # 最上面那条大小（不用改）
   width:
     home: 1200px #home page
@@ -223,13 +223,13 @@ navbar:
     # 本地搜索开关（有时候加载真的很慢 准备日后换成algolia）
     enable: true
     # 仅搜索文章
-    field: post
+    # field: post
     # 预加载
     preload: true
     # 搜索结果仅包含标题和元数据
-    content: true
+    # content: true
     # 页面内容形式
-    format: html
+    # format: html
   # Search
   ## See: https://github.com/theme-next/hexo-generator-searchdb
 # NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -315,7 +315,7 @@ articles:
   author_label: 
     enable: true # 作者标签
     auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
-    list: ["Tomori", "cite"] # 自定义标签 
+    list: ["TOMORI", "CITE"] # 自定义标签 
   # Code block settings
   code_block:
     copy: true # 代码块复制权限
@@ -422,7 +422,6 @@ footer:
 # INJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/inject
 inject:
-  # 自定义插件和动效
   enable: false
   # Inject custom head html code
   head: 
@@ -464,6 +463,9 @@ plugins:
     version: "9.3.0" # default v9.3.0
 # PLUGINS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
+preconnect:
+  - href: https://fonts.com
+    crossorigin: true
 
 # PAGE TEMPLATES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/page_templates

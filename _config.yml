@@ -50,7 +50,6 @@ highlight:
   wrap: true
   hljs: false
 prismjs:
-  enable: false
   preprocess: true
   line_number: true
   tab_replace: ''
@@ -72,6 +71,7 @@ category_map:
   Csharp与Unity: csharp
   把玩人工智能: mysteryAi
   408计算机考研: master-entrance
+  C++学习: Cplus-study
   其他: others
 tag_map:
 
