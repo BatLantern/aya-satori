@@ -131,8 +131,8 @@ home_banner:
     smart_backspace: true # 智能退格
   # Color of home banner text
   text_color: 
-    light: "#D8BFD8" # 日间模式首页文字颜色（可改）
-    dark: "#FF7F50" # 夜间模式首页文字颜色（可改）
+    light: "#e469e4" # 日间模式首页文字颜色（可改）
+    dark: "#e9754b" # 夜间模式首页文字颜色（可改）
   # 正文字体大小，字体库（不用改）
   text_style: 
     # Title font size
@@ -315,7 +315,7 @@ articles:
   author_label: 
     enable: true # 作者标签
     auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
-    list: ["TOMORI", "CITE"] # 自定义标签 
+    list: ["AYA TOMORI"] # 自定义标签 
   # Code block settings
   code_block:
     copy: true # 代码块复制权限
@@ -495,5 +495,5 @@ cdn:
 # 开发者模式 开启后页面数据文件将暴露 所有内容均可魔改
 developer:
   # Whether to enable developer mode (only for developers who want to modify the theme source code, not for ordinary users)
-  enable: false
+  enable: true
 # DEVELOPER MODE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
