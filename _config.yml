@@ -9,7 +9,6 @@ language: zh-CN
 timezone: 'Asia/shanghai'
 
 # URL
-# 在这里更改进入某个模块后，地址栏的链接变化，也称永久链接格式
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://smallbat.cn
 permalink: :title/
@@ -109,7 +108,7 @@ theme: redefine
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: https://github.com/BatLantern/aya-satori.git  #你的仓库地址
+  repository: https://github.com/BatLantern/aya-satori.git
   branch: main
 
 all_minifier: true

@@ -10,11 +10,8 @@
 # BASIC INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/basic/info
 info:
-  # 站点名称
   title: 蝠池茶室
-  # 作者名称
   author: 蝙蝠猫BatBattery
-  # 站点网址
   url: https://smallbat.cn
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -22,11 +19,8 @@ info:
 # IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
-  # 标签页图标
   favicon: /images/redefine-favicon.ico
-  # 站点左上角图标
   logo: 
-  # 个人头像
   avatar: /images/avatar.jpg
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -34,11 +28,8 @@ defaults:
 # COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/basic/colors
 colors:
-  #站点主题色
   primary: "#BA55D3"
-  # Secondary color (TBD)
   secondary: "#FF7F50"
-  # 站点默认模式 日间/夜间模式
   default_mode: dark # light, dark
 # COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -46,44 +37,34 @@ colors:
 # SITE CUSTOMIZATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/basic/global
 global:
-  # Custom fonts
   fonts:
-    # 自定义站点中文字体库
     chinese: 
       enable: true # Whether to enable custom chinese fonts
       family: MaoKenTangYuan (beta) # Font family
       url: https://chinese-fonts-cdn.deno.dev/chinesefonts3/packages/mkwtyt/dist/MaoKenTangYuan/result.css # Font URL to CSS file
-    # 自定义站点英文字体库
     english: 
       enable: true # Whether to enable custom english fonts
       family: MaoKenTangYuan (beta) # Font family
       url: https://chinese-fonts-cdn.deno.dev/chinesefonts3/packages/mkwtyt/dist/MaoKenTangYuan/result.css # Font URL to CSS file
-  # 文章宽度（不用动）
   content_max_width: 1000px
-  # 边栏宽度（不用动）
   sidebar_width: 210px
-  # Effects on mouse hover
   hover:
-    shadow: true # 标签块阴影效果
-    scale: true # 标签块缩放效果
+    shadow: true 
+    scale: true 
   # Scroll progress
   scroll_progress:
-    bar: true # 顶部进度条
-    percentage: false # 工具栏百分比效果
-  # 不蒜子计数 有不能初始化的iss 在解决
+    bar: true 
+    percentage: false 
   website_counter:
-    url: https://cn.vercount.one/js # 不蒜子api（不用动）
-    enable: false # 总开关
-    site_pv: false # 浏览量计数
-    site_uv: false # 访客量计数
-    post_pv: true # 文章浏览次数计数
+    url: https://cn.vercount.one/js 
+    enable: false 
+    site_pv: false 
+    site_uv: false 
+    post_pv: true 
   # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
   single_page: true
-  # 预加载
   preloader: true
-  # 分享优化
   open_graph: true
-  # 谷歌分析工具 国内使用会有风险
   google_analytics:
     enable: false # Whether to enable Google Analytics
     id:  # Google Analytics Measurement ID
@@ -92,7 +73,7 @@ global:
 
 # FONTAWESOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/basic/fontawesome
-fontawesome: # 预置pro版本 可以使用pro图标，保证加载速度建议不开
+fontawesome:
   # Thin version
   thin: false
   # Light version
@@ -107,33 +88,27 @@ fontawesome: # 预置pro版本 可以使用pro图标，保证加载速度建议�
 # HOME BANNER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/home/home_banner
 home_banner:
-  # 首页背景图总开关
   enable: true
-  # 首页背景图模式
   style: fixed # static or fixed
-  # 日/夜间模式背景图地址
   image: 
     light: /images/wallhaven-wqery6-light.jpg # light mode
     dark: /images/wallhaven-wqery6-dark.jpg # dark mode
-  # 首页正中央提示语
   title: ✿Fortitude✿Confident✿Calm✿
-  # 提示语下方的额外语言
   subtitle:
     text: [Loading...] # subtitle text, array
-    hitokoto:  # 一言语句接口
+    hitokoto: 
       enable: true # Whether to enable hitokoto
       api: https://v1.hitokoto.cn?max_length=20&c=a&c=b&c=d&c=h&c=i&c=k # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
-    typing_speed: 100 # 打字速度
-    backing_speed: 0 # 退格速度（0为停止语句切换）
-    starting_delay: 500 # 开始请求延时（0.5秒）
-    backing_delay: 1500000 # 保留时长（退格延时）（1500秒）
-    loop: false # 语句切换开关
-    smart_backspace: true # 智能退格
+    typing_speed: 100 
+    backing_speed: 0 
+    starting_delay: 500 
+    backing_delay: 1500000
+    loop: false 
+    smart_backspace: true 
   # Color of home banner text
   text_color: 
-    light: "#e469e4" # 日间模式首页文字颜色（可改）
-    dark: "#e9754b" # 夜间模式首页文字颜色（可改）
-  # 正文字体大小，字体库（不用改）
+    light: "#e469e4" 
+    dark: "#e9754b" 
   text_style: 
     # Title font size
     title_size: 2.8rem
@@ -149,13 +124,9 @@ home_banner:
     family: MaoKenTangYuan (beta)
     # URL to font CSS file
     url: https://chinese-fonts-cdn.deno.dev/chinesefonts3/packages/mkwtyt/dist/MaoKenTangYuan/result.css
-  # 下方社交链接
   social_links:
-    # 总开关
     enable: true
-    # 连接条位置
     style: default # default, reverse, center
-    # 社交链接
     links:
       fa-brands fa-bilibili: https://space.bilibili.com/104526845
       fa-brands fa-steam: https://steamcommunity.com/id/BattLantern
@@ -166,7 +137,6 @@ home_banner:
       # twitter:  # your twitter URL
       # email:  # your email
       # ...... # you can add more
-    # 二维码 用来赚钱 （这摆上去真的会有人付钱吗..）
     qrs:
       weixin:  # your Wechat QRcode image URL
       # ...... # you can add more
@@ -176,18 +146,14 @@ home_banner:
 # NAVIGATION BAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/home/navbar
 navbar:
-  # 最上面那条自动隐藏
   auto_hide: false
-  # 最上面那条的渐变色
   color:
-    left: "#a2c5a6" #左端
-    right: "#d3b4e2"  #右端
-    transparency: 60 #不透明度
-  # 最上面那条大小（不用改）
+    left: "#a2c5a6" 
+    right: "#d3b4e2"  
+    transparency: 60 
   width:
     home: 1200px #home page
     pages: 1000px #other pages
-  # 最上面那条的栏目 自己调整 记得开文件夹
   links:
     Home: 
       path: / 
@@ -220,16 +186,8 @@ navbar:
       icon: fa-brands fa-github
   # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
   search:
-    # 本地搜索开关（有时候加载真的很慢 准备日后换成algolia）
     enable: true
-    # 仅搜索文章
-    # field: post
-    # 预加载
     preload: true
-    # 搜索结果仅包含标题和元数据
-    # content: true
-    # 页面内容形式
-    # format: html
   # Search
   ## See: https://github.com/theme-next/hexo-generator-searchdb
 # NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -240,11 +198,11 @@ navbar:
 home:
   # Sidebar settings
   sidebar:
-    enable: true # 启用侧边栏
-    position: left # 侧边栏位置
-    first_item: info # 侧边栏顺序
-    announcement: "个人随笔/学习日记" # 个人信息
-    show_on_mobile: false # 在手机上显示不显示
+    enable: true 
+    position: left 
+    first_item: info
+    announcement: "个人随笔/学习日记"
+    show_on_mobile: false 
     links:
       categories: 
         path: /categories
@@ -274,13 +232,10 @@ home:
       #   path: /categories 
       #   icon: fa-regular fa-folder # can be empty
       # ...... # you can add more
-  # 文章日期格式
   article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
-  # 文章分类
   categories:
     enable: true  # Whether to enable
     limit: 3 # Max number of categories to display
-  # 标签分类
   tags:
     enable: true  # Whether to enable
     limit: 3  # Max number of tags to display
@@ -290,7 +245,6 @@ home:
 # ARTICLE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/posts/articles
 articles:
-  # 正文字体参数（不用动）
   style:
     font_size: 16px # Font size
     line_height: 1.5 # Line height
@@ -309,35 +263,34 @@ articles:
   # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
   word_count:
     enable: true # Whether to enable
-    count: true # 字数统计
-    min2read: true # 阅读时间
+    count: true 
+    min2read: true 
   # Author label
   author_label: 
-    enable: true # 作者标签
+    enable: true 
     auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
-    list: ["AYA TOMORI"] # 自定义标签 
+    list: ["AYA TOMORI"]  
   # Code block settings
   code_block:
-    copy: true # 代码块复制权限
-    style: mac # 样式
-    font: # 自定义代码字体
+    copy: true 
+    style: mac 
+    font: 
       enable: false # Whether to enable
       family: # Font family
       url: # Font URL to CSS file
   # Table of contents settings
   toc:
-    enable: true # 目录
+    enable: true 
     max_depth: 3 # TOC depth
-    number: false # 目录序号
-    expand: true # 自动展开
-    init_open: true # 默认完全展开
+    number: false 
+    expand: true 
+    init_open: true 
   # Whether to enable copyright notice
   copyright:
-    enable: true # 权限
+    enable: true 
     default: idontknow # Default license, can be cc_by_nc_sa, cc_by_nd, cc_by_nc, cc_by_sa, cc_by, all_rights_reserved, public_domain
-  # 懒加载
   lazyload: true
-  # 推荐阅读 插件装不上 交了iss等后期处理 或者装别的主题的用
+  # 推荐阅读 插件装不上 等后期处理 或者装别的主题的用
   recommendation:
     # Whether to enable article recommendation
     enable: false
@@ -357,7 +310,6 @@ articles:
 # COMMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/posts/comment
 comment:
-  # 评论系统 后期再开 因为要用国外服务器 没优化好就开会非常的卡
   enable: false
   # Comment system
   system: waline # waline, gitalk, twikoo, giscus
@@ -401,19 +353,14 @@ comment:
 # FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/footer
 footer:
-  # 运行时间
   runtime: true # show website running time or not
-  # 图标
   icon: '<i class="fa-solid fa-cog fa-spin fa-spin-reverse" style="--fa-animation-duration: 4s; color: #f54545"></i>'
-  # 建站时间点
   start: 2024/5/25 08:00:00
-  # 站点字数和文章统计
   statistics: true # show site statistics or not (total articles, total words)
-  # 额外信息
   customize: BatPond Tearoom @BatLantern from aya-satori
   # ICP record number. See https://beian.miit.gov.cn/
   icp:
-    enable: false # icp备案号 仅国内部署需要 国外部署不需要
+    enable: false 
     number: # ICP record number
     url: # ICP record url
 # FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -436,14 +383,13 @@ inject:
 
 # PLUGINS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/plugins
-# 插件列表
 plugins:
   # RSS feed. Requires hexo-generator-feed (npm i hexo-generator-feed). See https://github.com/hexojs/hexo-generator-feed
   feed:
     enable: false
 # Aplayer. See https://github.com/DIYgod/APlayer
   aplayer:
-    enable: false # 音乐播放器 只能单曲 考虑换插件改为自动获取wyy歌单列表播放
+    enable: false
     type: fixed # fixed, mini
     audios:
       - name: # audio name
@@ -459,7 +405,7 @@ plugins:
       # .... you can add more audios here
   # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
   mermaid:
-    enable: true # 基于md的流程图
+    enable: true 
     version: "9.3.0" # default v9.3.0
 # PLUGINS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -470,9 +416,7 @@ preconnect:
 # PAGE TEMPLATES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/page_templates
 page_templates:
-  # 友链列数
   friends_column: 2
-  # 标签是模糊还是词云
   tags_style: blur # blur, cloud
 # PAGE TEMPLATES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -480,7 +424,6 @@ page_templates:
 # CDN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/cdn
 cdn:
-  # cdn部署 本来就快不用开 压下资源就行 或者直接在运营商那买cdn服务 当然你也可以用这里作者的 偶尔给他打点钱看他挺辛苦x
   enable: false
   # CDN Provider
   provider: staticfile # staticfile, bootcdn, cdnjs, jsdelivr, unpkg, custom
@@ -492,7 +435,6 @@ cdn:
 
 # DEVELOPER MODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/developer
-# 开发者模式 开启后页面数据文件将暴露 所有内容均可魔改
 developer:
   # Whether to enable developer mode (only for developers who want to modify the theme source code, not for ordinary users)
   enable: true
