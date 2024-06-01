@@ -369,11 +369,13 @@ footer:
 # INJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/inject
 inject:
-  enable: false
+  enable: true
   # Inject custom head html code
   head: 
-    -
-    -
+    - window.addEventListener('resize', function() {
+      var windowHeight = window.innerHeight;
+      document.getElementById('backgroundContainer').style.height = (windowHeight - 170) + 'px';});
+
   # Inject custom footer html code
   footer:
     -
