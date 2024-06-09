@@ -56,10 +56,10 @@ global:
     bar: true 
     percentage: false 
   website_counter:
-    url: https://cn.vercount.one/js 
-    enable: false 
-    site_pv: false 
-    site_uv: false 
+    url: https://vercount.one/js
+    enable: true 
+    site_pv: false
+    site_uv: false
     post_pv: true 
   # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
   single_page: true
@@ -178,9 +178,9 @@ navbar:
       submenus:
         Friends: /mates
         Links: /links
-    Status: 
-      path: https://status.ohevan.com
-      icon: fa-solid fa-circle-exclamation
+    # Status: 
+    #   path: https://status.ohevan.com
+    #   icon: fa-solid fa-circle-exclamation
     Github:
       path: https://github.com/BatLantern
       icon: fa-brands fa-github
@@ -290,7 +290,6 @@ articles:
     enable: true 
     default: idontknow # Default license, can be cc_by_nc_sa, cc_by_nd, cc_by_nc, cc_by_sa, cc_by, all_rights_reserved, public_domain
   lazyload: true
-  # 推荐阅读 插件装不上 等后期处理 或者装别的主题的用
   recommendation:
     # Whether to enable article recommendation
     enable: false
