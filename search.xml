@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>每日一题#1 [位运算]</title>
+    <title>每日一题#1</title>
     <url>/everyday-quizs/everyquiz-1/</url>
     <content><![CDATA[
-  <div class="note-large pink">
+  <div class="note-large blue">
     <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>寄语</p>
+      <p>文章寄语</p>
 
     </div>
     <div class="notel-content">
@@ -17,7 +17,7 @@
 
 <hr>
 <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>从今天开始会写blog，主要是记笔记以防后期忘记，同时也会记一些重要的知识点。</strong></p>
-<p><strong>好了，让我们开始吧。</strong>(纯小白，大佬轻喷)</p>
+<p><strong>好了，让我们开始吧。</strong></p>
 <hr>
 <h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣签到题为<a href="https://leetcode.cn/problems/single-number-iii/description/"><em>260. 只出现一次的数字 III</em></a>，题目如下：</p>
 <blockquote>
@@ -114,10 +114,12 @@
 </blockquote>
 <p>现在就可以对原数组的每一个数进行<strong>与运算</strong>后分类，有0的分为一组，有1的分为一组。</p>
 <p>以下是分类结果：针对输入为 <code>[1, 2, 1, 3, 2, 5]</code>的为例</p>
+<blockquote>
 <ul>
 <li>1：2, 2, 3</li>
 <li>0：1, 1, 5</li>
 </ul>
+</blockquote>
 <p>经过”分治”的过程，问题转化成了简单的 **<code>&quot;在偶数次数字里找到只出现一次的元素&quot;</code>**。</p>
 <p>现在只要遵循异或的运算规则，将一个类总的所有元素全部<strong>异或</strong>，偶数次的元素会被<strong>相互抵消</strong>，然后就会剩下只出现一次的元素了。</p>
 <p>代码如下 :  <strong><code>时间复杂度：O(n)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
@@ -135,6 +137,191 @@
       <tags>
         <tag>算法</tag>
         <tag>计算机</tag>
+        <tag>C#学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日一题#2</title>
+    <url>/everyday-quizs/everyquiz-2/</url>
+    <content><![CDATA[
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>文章寄语</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>请别在意。我是旅人，得继续旅行才行。</strong><br> 　　　　　<em>——伊蕾娜《魔女之旅》</em></p>
+
+    </div>
+  </div>
+
+<hr>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>每日一题的记录点</strong>。鉴于今天的题目比较简单，所以内容可能较少。</p>
+<p><strong>好了，让我们开始吧。</strong></p>
+<hr>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣签到题为<a href="https://leetcode.cn/problems/sum-multiples/description/"><em>2652. 倍数求和</em></a>，题目如下：</p>
+<blockquote>
+<p>给你一个正整数 <code>n</code>，请你计算在 <code>[1，n]</code>范围内能被 <code>3</code>、<code>5</code>、<code>7</code>整除的所有整数之和。</p>
+<p>返回一个整数，用于表示给定范围内所有满足约束条件的数字之和。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：n = 7</span><br><span class="line">输出：21</span><br><span class="line">解释：在 [1, 7] 范围内能被 3、5、7 整除的所有整数分别是 3、5、6、7 。数字之和为 21 。</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<p>看到这里，想出枚举法，即遍历数字后找出对应满足条件的数字。再看看范围，n在 <code>1~1000</code>之间，直接进行一个使用。</p>
+<hr>
+<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：枚举遍历"><a href="#方法一：枚举遍历" class="headerlink" title="方法一：枚举遍历"></a>方法一：枚举遍历</h4><p>代码如下 :  <strong><code>时间复杂度：O(n)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SumOfMultiples</span>(<span class="params"><span class="built_in">int</span> n</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//遍历，找出所有3,5,7倍数的数字后累加</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span> || i % <span class="number">7</span> == <span class="number">0</span>)</span><br><span class="line">            ans += i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure></div>
+
+<p>没什么好说的，基础的思路。耗费时间 <strong><code>(16ms)</code></strong> 和空间 **<code>(25.40MB)</code>**。</p>
+<hr>
+<h4 id="方法二：数学思想"><a href="#方法二：数学思想" class="headerlink" title="方法二：数学思想"></a>方法二：数学思想</h4><p> 看了题解研究了半天，终于知道怎么把时间复杂度降为O(1)了。只能说这个方法很巧妙。</p>
+<p> 如果说输入的数是 <code>n=20</code>时，可以先把答案(也就是3,5,7的倍数的数)挑出来讨论：</p>
+<blockquote>
+<ul>
+<li>3的倍数: 3, 6, 9, 12, 15, 18</li>
+<li>5的倍数: 5, 10, 15, 20</li>
+<li>7的倍数: 7, 14</li>
+</ul>
+</blockquote>
+<p>这些就是答案，然后会发现这是<strong>等差数列</strong>。既然是等差数列，当然就可以用等差数列的求和公式来计算他们的和。</p>
+
+  <div class="note p-4 mb-4 rounded-small tip">
+    <p><em>一个等差数列的和</em> &#x3D; ( 首项 + 末项 ) * 项数 &#x2F; 2</p>
+
+  </div>
+
+<p>现在我们有了首项(求几的倍数就是几)，那末项和项数呢?</p>
+<p>这就可以用 <code>n/首项</code>来得出 <code>n</code>范围内<strong>最大的</strong>元素数量了(就是项数)，然后再用这个结果<strong>乘以</strong>其首项，即为不大于n的最大倍数结果。比如 <code>n=20</code>时，<code>20/3=6</code>，则6即为项数，而 <code>6*3=18</code>即为末项。</p>
+<p>现在我们可以正常使用等差公式了，首项为 <code>n</code>，末项为 <code>(n/首项)*首项</code>，项数为 <code>n/首项</code>。</p>
+<p>为了方便我们将 <code>n/首项</code>记为 <code>counts</code>。这样就可以算了。现在公式变成了以下这个：</p>
+
+  <div class="note p-4 mb-4 rounded-small tip">
+    <p><em>一个等差数列的和</em> &#x3D; ( 首项 + counts * 首项 ) * counts &#x2F; 2</p>
+
+  </div>
+
+<p>如果传入两个数，分别是首项和n，记为a和b的话，代码应该这样：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//sum函数即为我们要求的这个等差数列的和</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Sum</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> counts = b / a;</span><br><span class="line">    <span class="built_in">int</span> result = (a + counts * a) * counts / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>现在传入 <code>3，5，7</code>和n就可以了。</p>
+
+  <div class="note-large red">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p><em><strong>注意：</strong></em></p>
+
+    </div>
+    <div class="notel-content">
+      <ul>
+<li>末项求值时，不能对这个算式进行<strong>化简</strong>,因为它是取整过的数，而且他的目的仅仅是找到小于n的最大倍数。</li>
+<li>两者本质<strong>完全不同</strong>，即使是换成高精度的浮点计算也不行。</li>
+</ul>
+
+    </div>
+  </div>
+
+<p>然后按照小学的知识，比如这个：</p>
+
+  <div class="note-large default">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <i class="notel-icon fa-solid fa-info"></i><p>小学例题</p>
+
+    </div>
+    <div class="notel-content">
+      <blockquote>
+<p><strong>喜欢数学的有10人 喜欢英语的有5人 喜欢科学的有12人</strong></p>
+<p><strong>同时喜欢数学和英语的有2人 英语和科学的有2人 数学和科学的有5人</strong></p>
+<p><strong>三门学科同时喜欢的有1人</strong></p>
+<p>现在问你只喜欢一门学科的人有多少？</p>
+</blockquote>
+
+    </div>
+  </div>
+
+<p>这就是<strong>容斥定理</strong>的简单应用，这个题只要把一门学科的<strong>全加</strong>起来，减去两门学科<strong>重叠</strong>的人数。因为三门学科的人在做差的时候被减去了两次，所以要把他<strong>加</strong>回来。所以这个问题的答案就是 <code>10+5+12-2-2-5+1=19人</code>。</p>
+<p>所以这个程序也是一样的道理，把 <code>3，5，7</code>的倍数加起来，减去两两倍数的乘积，然后再把三个数的乘积(105)加回去，就是最终的答案了。</p>
+<p>代码如下 :  <strong><code>时间复杂度：O(1)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//sum函数即为我们要求的这个等差数列的和</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Sum</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> counts = b / a;</span><br><span class="line">    <span class="built_in">int</span> result = (a + a * counts) * counts / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//主函数，用容斥定理求出最终的结果</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SumOfMultiples</span>(<span class="params"><span class="built_in">int</span> n</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> result = Sum(<span class="number">3</span>, n) + Sum(<span class="number">5</span>, n) + Sum(<span class="number">7</span>, n) - Sum(<span class="number">15</span>, n) - Sum(<span class="number">21</span>, n) - Sum(<span class="number">35</span>, n) + Sum(<span class="number">105</span>, n);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>通过这种方法得出的结果，耗时 <strong><code>(20ms)</code></strong> 和空间 **<code>(25.37MB)</code>**。</p>
+<p>虽然耗时和空间差不了多少，但是这个时间复杂度是O(1)。<del>比前面那个高级</del></p>
+<hr>
+<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3><p>暂无留言</p>
+<hr>
+<p><strong>笔记完毕 编辑完毕时间CST 10.17 23:44</strong></p>
+]]></content>
+      <categories>
+        <category>每日一题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>计算机</tag>
+        <tag>C#学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日一题#3</title>
+    <url>/everyday-quizs/everyquiz-3/</url>
+    <content><![CDATA[
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>文章寄语</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>其实美丽的故事都是没有结局的，只因为它没有结局所以才会美丽。</strong><br>　　　　　　　　　　　　　　　　　　　　<em>——《萤火之森》</em></p>
+
+    </div>
+  </div>
+
+<hr>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>每日一题的记录点</strong>.以后仅把我觉得有意思的题写成博客,而不是每道题都写了.</p>
+<p><strong>好了，让我们开始吧。</strong></p>
+<hr>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣题为 <a href="https://leetcode.cn/problems/search-insert-position/description/"><em>35.搜索插入位置</em></a>，题目如下：</p>
+<blockquote>
+<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。<br>如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 5</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<p>有序数组；搜索，立马想出二分查找法。再看看题目范围和提示：”<code>nums</code>为<strong>无重复元素</strong>的<strong>升序</strong>排列数组”，这下我们还可以使用内置函数进行解决。</p>
+<hr>
+<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：内置函数"><a href="#方法一：内置函数" class="headerlink" title="方法一：内置函数"></a>方法一：内置函数</h4><p>在C#中，有很多可以排序的数据类型，这里仅仅只需要使用<strong>列表</strong>就足够了。而且这道题无非就是两个子问题：</p>
+<blockquote>
+<ul>
+<li>如果原有数组中存在该数，则返回其索引。</li>
+<li>如果原有数组中不存在该数，则返回其应该被插入的位置。</li>
+</ul>
+</blockquote>
+<p>所以我们先把这个数组转换成列表，查找有无该数。如果没有，就把它放到列表里，然后排序后输出索引。</p>
+<p>因为我们把它转换成了一个新的数据类型列表，所以占用了n位列表的空间，空间复杂度是O(n)。</p>
+<p>代码如下 :  <strong><code>时间复杂度：O(nlogn)</code></strong> <strong><code>空间复杂度：O(n)</code></strong></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SearchInsert</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//数组转列表</span></span><br><span class="line">    List&lt;<span class="built_in">int</span>&gt; sorted = nums.ToList();</span><br><span class="line">    <span class="comment">//如果存在就返回索引 indexof时返回索引的函数</span></span><br><span class="line">    <span class="keyword">if</span> (sorted.Contains(target))</span><br><span class="line">        <span class="keyword">return</span> sorted.IndexOf(target);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//不存在就加入 排序并输出最后的索引</span></span><br><span class="line">        sorted.Add(target);</span><br><span class="line">        <span class="comment">//因为内置排序函数用了快速排序，所以时间复杂度是nlogn</span></span><br><span class="line">        sorted.Sort();</span><br><span class="line">        <span class="keyword">return</span> sorted.IndexOf(target);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>通过这种方法得出的结果，耗时 <strong><code>(76ms)</code></strong> 和空间 **<code>(38.13MB)</code>**。</p>
+<p>这里使用了内置函数，让系统帮我找，平时用挺好。但是如果这道题用这个，做这道题的意义就没有了。</p>
+<p><em><del>但是这串代码仍然有他的优化版本，用内置的二分搜索即可办到，这里就不展示了</del></em></p>
+<p><del>所以为了体现这道题的实际意义</del>  我按照正规做法做了一遍。</p>
+<hr>
+<h4 id="方法二：二分运算"><a href="#方法二：二分运算" class="headerlink" title="方法二：二分运算"></a>方法二：二分运算</h4><p>所谓二分运算，就是把东西一分为二，具体二分细节可以去网上搜。<del>懒的写了</del></p>
+<p>一般就是先在<strong>有序</strong>数组的<strong>最开始</strong>和<strong>最末尾</strong>设定两个扫描头，然后把左边和右边加起来除以二，也就是取<strong>中点</strong>。然后我们判断，如果这个数大于这个中点，说明在右半边，然后我们扔掉左半边不要的，循环反复。反之就扔掉右半边。</p>
+<p>对于这道题来讲的话，和二分没差，都是用<strong>同一个</strong>模板。</p>
+<p>只不过有一点不一样，如果数组中不存在这个数，我们需要返回的是不大于这个数的最大的数的索引，这个就是他需要被插入的位置。而不是那个中点 <code>mid</code>了</p>
+<p>因为这里没有开辟新的类型和新的数组，所以只占用了常数量级空间，空间复杂度是O(1)。</p>
+<p>代码如下 :  <strong><code>时间复杂度：O(logn)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SearchInsert</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//在开头和结尾定义扫描头</span></span><br><span class="line">    <span class="built_in">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">int</span> right = nums.Length - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//设定约束条件</span></span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//这句话在下面着重讲一下</span></span><br><span class="line">        <span class="built_in">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//如果这个数字在数组中存在就返回他的索引</span></span><br><span class="line">        <span class="keyword">if</span> (target == nums[mid])</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="comment">//不然就按照二分模板，在左边扔掉右边，在右边扔掉左边</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (target &lt;= nums[mid])</span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果这个数字在数组中不存在就返回他的插入位置靠左的索引</span></span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>说一下前面提到的 <code>left+(right-left)/2</code>，这是一种防止溢出的手段，如果数字太大，加起来可能会爆 <code>int</code>的范围，所以就这么写。这么写和 <code>(left+right)/2</code>相同。<del>具体什么原理我也不太清楚。</del></p>
+<p>如果想更简便的话，可以把 <code>x/2</code>变成位运算 <code>x&gt;&gt;1</code>，更有效率。</p>
+<p>通过这种方法得出的结果，耗时 <strong><code>(84ms)</code></strong> 和空间 **<code>(37.59MB)</code>**。</p>
+<hr>
+<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3><p>该摸鱼了。</p>
+<hr>
+<p><strong>笔记完毕 编辑完毕时间CST 10.25 23:26</strong></p>
+]]></content>
+      <categories>
+        <category>每日一题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>计算机</tag>
+        <tag>C#学习</tag>
       </tags>
   </entry>
 </search>
