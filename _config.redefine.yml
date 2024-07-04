@@ -250,8 +250,8 @@ articles:
     line_height: 1.5 # Line height
     image_border_radius: 14px # image border radius
     image_alignment: center # image alignment. left, center
-    image_caption: false # Whether to display image caption
-    link_icon: false # Whether to display link icon
+    image_caption: true # Whether to display image caption
+    link_icon: true # Whether to display link icon
     title_alignment: left # Title alignment. left, center
     headings_top_spacing: # Top spacing for headings from h1-h6
       h1: 5rem
@@ -281,7 +281,7 @@ articles:
   # Table of contents settings
   toc:
     enable: true 
-    max_depth: 3 # TOC depth
+    max_depth: 5 # TOC depth
     number: false 
     expand: true 
     init_open: true 

@@ -65,12 +65,11 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
-  刷题总结: leetc-experience
   每日一题: everyday-quizs
-  Csharp与Unity: csharp
+  Csharp与Unity: csharp-unity
   把玩人工智能: mysteryAi
-  408计算机考研: master-entrance
-  C++学习: Cplus-study
+  数据结构与算法: computer-science
+  <Hello!算法>笔记: hellonotes
   其他: others
 tag_map:
 
