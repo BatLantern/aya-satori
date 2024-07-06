@@ -1,0 +1,9 @@
+- links_category: appweb
+  has_thumbnail: false
+  list: 
+    - name: Hitokoto
+      link: https://hitokoto.cn
+      description: 一言语句官网
+      avatar: \images\th.png
+      thumbnail:
+
