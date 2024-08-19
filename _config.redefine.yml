@@ -116,7 +116,7 @@ home_banner:
     light: /images/wallhaven-wqery6-light.jpg # light mode
     dark: /images/wallhaven-wqery6-dark.jpg # dark mode
   # Home banner title
-  title: # ✿Fortitude✿Confident✿Calm✿ 留空以自定义标题动画
+  title: A # ✿Fortitude✿Confident✿Calm✿ 留空以自定义标题动画
   # Home banner subtitle
   subtitle:
     text: [Loading...] # subtitle text, array
