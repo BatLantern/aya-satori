@@ -116,7 +116,9 @@ home_banner:
     light: /images/wallhaven-wqery6-light.jpg # light mode
     dark: /images/wallhaven-wqery6-dark.jpg # dark mode
   # Home banner title
-  title: A # ✿Fortitude✿Confident✿Calm✿ 留空以自定义标题动画
+  title: ✿Fortitude✿
+  titleb: Confident
+  titlec: ✿Calm✿
   # Home banner subtitle
   subtitle:
     text: [Loading...] # subtitle text, array
@@ -223,7 +225,7 @@ home:
     enable: true # Whether to enable sidebar
     position: left # Sidebar position. left, right
     first_item: info # First item in sidebar. menu, info
-    announcement: "个人随笔/学习日记" # Announcement text
+    announcement: "☆茶室/庭院/冒险者公会☆" # Announcement text
     show_on_mobile: false # Whether to show sidebar navigation on mobile sheet menu
     links:
       categories: 
