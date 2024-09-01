@@ -46,7 +46,7 @@ colors:
 # SITE CUSTOMIZATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 # Docs: https://redefine-docs.ohevan.com/basic/global
 global:
-  # Custom fonts
+  # Custom global fonts
   fonts:
     # Chinese fonts
     chinese: 
@@ -56,6 +56,11 @@ global:
     # English fonts
     english: 
       enable: true # Whether to enable custom english fonts
+      family: Yozai Medium # Font family
+      url: https://chinese-fonts-cdn.deno.dev/packages/yozai/dist/Yozai-Medium/result.css # Font URL to CSS file
+    # Custom title fonts (navbar, sidebar)
+    title:
+      enable: true # Whether to enable custom title fonts
       family: Yozai Medium # Font family
       url: https://chinese-fonts-cdn.deno.dev/packages/yozai/dist/Yozai-Medium/result.css # Font URL to CSS file
   # Content max width
@@ -80,7 +85,9 @@ global:
   # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
   single_page: true
   # Whether to enable Preloader.
-  preloader: true
+  preloader:
+    enable: true
+    custom_message: # Custom message. If empty, the site title will be displayed
   # Whether to enable open graph
   open_graph: true
   # Google Analytics
@@ -115,7 +122,7 @@ home_banner:
   image: 
     light: /images/wallhaven-wqery6-light.jpg # light mode
     dark: /images/wallhaven-wqery6-dark.jpg # dark mode
-  # Home banner title[3 parts for me]
+  # Home banner title[3 parts]
   title: ✿Fortitude✿
   titleb: Confident
   titlec: ✿Calm✿
@@ -124,6 +131,7 @@ home_banner:
     text: [Loading...] # subtitle text, array
     hitokoto:  # 一言配置
       enable: true # Whether to enable hitokoto
+      show_from: true # Whether to show author
       api: https://v1.hitokoto.cn?max_length=20&c=a&c=b&c=d&c=h&c=i&c=k # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
     typing_speed: 100 # Typing speed (ms)
     backing_speed: 0 # Backing speed (ms)
@@ -179,7 +187,7 @@ navbar:
   color:
     left: "#a2c5a6" #left side 
     right: "#d3b4e2"  #right side
-    transparency: 60 #percent (10-99)
+    transparency: 55 #percent (10-99)
   # Navbar width (usually no need to modify)
   width:
     home: 1200px #home page
@@ -229,7 +237,7 @@ home:
     enable: true # Whether to enable sidebar
     position: left # Sidebar position. left, right
     first_item: info # First item in sidebar. menu, info
-    announcement: "☆茶室/庭院/冒险者公会☆" # Announcement text
+    announcement: "☆庭院/梦境研究会/冒险者公会☆" # Announcement text
     show_on_mobile: false # Whether to show sidebar navigation on mobile sheet menu
     links:
       categories: 
@@ -262,6 +270,8 @@ home:
       # ...... # you can add more
   # Article date format
   article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
+  # Article excerpt length
+  excerpt_length: 100 # Max length of article excerpt
   # Article categories visibility
   categories:
     enable: true  # Whether to enable
@@ -306,6 +316,9 @@ articles:
   code_block:
     copy: true # Whether to enable code block copy button
     style: mac # mac | simple
+    highlight_theme: # Color scheme for highlightjs code highlighting. For preview, see https://highlightjs.org/examples
+      light: atom-one-light # light mode theme, support: github, atom-one-light, default
+      dark: night-owl # dark mode theme, support: github-dark, monokai-sublime, vs2015, night-owl, atom-one-dark, nord, tokyo-night-dark, a11y-dark, agate
     font: # Custom font
       enable: false # Whether to enable
       family: # Font family
@@ -466,7 +479,7 @@ cdn:
   # Whether to enable CDN
   enable: true
   # CDN Provider
-  provider: npmmirror # npmmirror, zstatic, sustech, staticfile, bootcdn, cdnjs, jsdelivr, unpkg, custom
+  provider: npmmirror # npmmirror, zstatic, sustech, cdnjs, jsdelivr, unpkg, custom
   # Custom CDN URL
   # format example: https://cdn.custom.com/hexo-theme-redefine/${version}/source/${path}
   # The ${path} must leads to the root of the "source" folder of the theme
