@@ -115,7 +115,7 @@ home_banner:
   image: 
     light: /images/wallhaven-wqery6-light.jpg # light mode
     dark: /images/wallhaven-wqery6-dark.jpg # dark mode
-  # Home banner title
+  # Home banner title[3 parts for me]
   title: ✿Fortitude✿
   titleb: Confident
   titlec: ✿Calm✿
@@ -131,6 +131,10 @@ home_banner:
     backing_delay: 1500000 # Backing delay (ms)
     loop: false # Whether to loop
     smart_backspace: true # Whether to smart backspace
+  # font size multiply
+  size_multiply:
+    title_multiply: 1.3 # title size multiply
+    subtitle_multiply: 1.2 # subtitle size multiply
   # Color of home banner text
   text_color: 
     light: "#e469e4" # light mode
@@ -274,7 +278,7 @@ home:
 articles:
   # Set the styles of the article
   style:
-    font_size: 20px # Font size
+    font_size: 18px # Font size
     line_height: 1.5 # Line height
     image_border_radius: 14px # image border radius
     image_alignment: center # image alignment. left, center
@@ -297,7 +301,7 @@ articles:
   author_label: 
     enable: true # Whether to enable
     auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
-    list: ["早苗", "AYA TOMORI"]  
+    list: ["早苗", "AYA TOMORI"] 
   # Code block settings
   code_block:
     copy: true # Whether to enable code block copy button
@@ -409,11 +413,11 @@ inject:
   enable: false
   # Inject custom head html code
   head: 
-    -
+    - 
     -
   # Inject custom footer html code
   footer:
-    -
+    - 
     -
 # INJECT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -460,7 +464,7 @@ page_templates:
 # Docs: https://redefine-docs.ohevan.com/cdn
 cdn:
   # Whether to enable CDN
-  enable: false
+  enable: true
   # CDN Provider
   provider: npmmirror # npmmirror, zstatic, sustech, staticfile, bootcdn, cdnjs, jsdelivr, unpkg, custom
   # Custom CDN URL
