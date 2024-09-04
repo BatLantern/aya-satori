@@ -141,8 +141,8 @@ home_banner:
     smart_backspace: true # Whether to smart backspace
   # font size multiply
   size_multiply:
-    title_multiply: 1.3 # title size multiply [default:1.0]
-    subtitle_multiply: 1.2 # subtitle size multiply [default:1.0]
+    title_multiply: 1.2 # title size multiply [default:1.0]
+    subtitle_multiply: 1.1 # subtitle size multiply [default:1.0]
   # Color of home banner text
   text_color: 
     light: "#e469e4" # light mode
@@ -330,10 +330,10 @@ articles:
     number: false # Whether to add number to TOC automatically
     expand: true # Whether to expand TOC
     init_open: true # Open toc by default
-  # toc & article opacity
+  # global opacity
   post_opacity:
+    global_opacity: 0.88 # global opacity set [default:1.0]
     toc_opacity: 0.7 # toc opacity set [default:1.0]
-    article_opacity: 0.85 # article opacity set [default:1.0]
   # Whether to enable copyright notice
   copyright:
     enable: true # Whether to enable
