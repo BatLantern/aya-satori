@@ -50,19 +50,19 @@ global:
   fonts:
     # Chinese fonts
     chinese: 
-      enable: true # Whether to enable custom chinese fonts
-      family: Yozai Medium # Font family
-      url: https://chinese-fonts-cdn.deno.dev/packages/yozai/dist/Yozai-Medium/result.css # Font URL to CSS file
+      enable: false # Whether to enable custom chinese fonts
+      family: MaoKenTangYuan (beta) # Font family
+      url: https://chinese-fonts-cdn.deno.dev/packages/mkwtyt/dist/MaoKenTangYuan/result.css # Font URL to CSS file
     # English fonts
     english: 
-      enable: true # Whether to enable custom english fonts
-      family: Yozai Medium # Font family
-      url: https://chinese-fonts-cdn.deno.dev/packages/yozai/dist/Yozai-Medium/result.css # Font URL to CSS file
+      enable: false # Whether to enable custom english fonts
+      family: MaoKenTangYuan (beta) # Font family
+      url: https://chinese-fonts-cdn.deno.dev/packages/mkwtyt/dist/MaoKenTangYuan/result.css # Font URL to CSS file
     # Custom title fonts (navbar, sidebar)
     title:
-      enable: true # Whether to enable custom title fonts
-      family: Yozai Medium # Font family
-      url: https://chinese-fonts-cdn.deno.dev/packages/yozai/dist/Yozai-Medium/result.css # Font URL to CSS file
+      enable: false # Whether to enable custom title fonts
+      family: MaoKenTangYuan (beta) # Font family
+      url: https://chinese-fonts-cdn.deno.dev/packages/mkwtyt/dist/MaoKenTangYuan/result.css # Font URL to CSS file
   # Content max width
   content_max_width: 1000px
   # Sidebar width
@@ -122,10 +122,16 @@ home_banner:
   image: 
     light: /images/wallhaven-wqery6-light.jpg # light mode
     dark: /images/wallhaven-wqery6-dark.jpg # dark mode
-  # Home banner title[3 parts]
-  title: ✿Fortitude✿
-  titleb: Confident
-  titlec: ✿Calm✿
+  # Home banner title
+  title_parts:
+    titlea: ✿Fortitude✿ # custom titles
+    titleb: Confident
+    titlec: ✿Calm✿
+  # Home banner color
+  title_colors:
+    title_color_a: 'rgba(165,70,122,.8)' # colors code, HEX, RGB, RGBA
+    title_color_b: 'rgba(100,64,158,.8)' # If empty, use the default color
+    title_color_c: 'rgba(40,136,99,.8)'
   # Home banner subtitle
   subtitle:
     text: [Loading...] # subtitle text, array
@@ -138,6 +144,7 @@ home_banner:
     starting_delay: 500 # Start delay (ms)
     backing_delay: 1500000 # Backing delay (ms)
     loop: false # Whether to loop
+    cache: true # Whether to enable hitokoto cache, 1 loaded only 1 hitokoto
     smart_backspace: true # Whether to smart backspace
   # font size multiply
   size_multiply:
@@ -158,11 +165,11 @@ home_banner:
   # Home banner custom font
   custom_font: 
     # Whether to enable custom font
-    enable: true
+    enable: false
     # Font family
-    family: Yozai Medium
+    family: MaoKenTangYuan (beta)
     # URL to font CSS file
-    url: https://chinese-fonts-cdn.deno.dev/packages/yozai/dist/Yozai-Medium/result.css
+    url: https://chinese-fonts-cdn.deno.dev/packages/mkwtyt/dist/MaoKenTangYuan/result.css
   # Home banner social links
   social_links:
     # Whether to enable
@@ -332,8 +339,8 @@ articles:
     init_open: true # Open toc by default
   # global opacity
   post_opacity:
-    global_opacity: 0.88 # global opacity set [default:1.0]
-    toc_opacity: 0.7 # toc opacity set [default:1.0]
+    global_opacity: 0.9 # global opacity set [default:1.0]
+    toc_opacity: 0.7 # toc opacity set [default:0.0]
   # Whether to enable copyright notice
   copyright:
     enable: true # Whether to enable
