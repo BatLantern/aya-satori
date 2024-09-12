@@ -123,15 +123,9 @@ home_banner:
     light: /images/wallhaven-wqery6-light.jpg # light mode
     dark: /images/wallhaven-wqery6-dark.jpg # dark mode
   # Home banner title
-  title_parts:
-    titlea: ✿Fortitude✿ # custom titles
-    titleb: Confident
-    titlec: ✿Calm✿
+  title_parts: ['✿Fortitude✿', 'Confident', '✿Calm✿'] # If all parts empty, use the default title, delete parts, empty the parts
   # Home banner color
-  title_colors:
-    title_color_a: 'rgba(165,70,122,.8)' # colors code, HEX, RGB, RGBA
-    title_color_b: 'rgba(100,64,158,.8)' # If empty, use the default color
-    title_color_c: 'rgba(40,136,99,.8)'
+  title_colors: ['rgba(165,70,122,.8)', 'rgba(100,64,158,.8)', 'rgba(40,136,99,.8)'] # colors code, HEX, RGB, RGBA, If empty, use the default color, delete parts, empty the parts
   # Home banner subtitle
   subtitle:
     text: [Loading...] # subtitle text, array
@@ -318,7 +312,9 @@ articles:
   author_label: 
     enable: true # Whether to enable
     auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
-    list: ["早苗", "AYA TOMORI"] 
+    sync: one # all, one, sync all or just 1st to article
+    list: ["AYA TOMORI", "早苗"] # suggest <8 char
+    custom_color: ['#e67e22', '#13963a'] # label color, empty means none color
   # Code block settings
   code_block:
     copy: false # Whether to enable code block copy button
