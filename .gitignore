@@ -1,12 +1,18 @@
-.DS_Store
-Thumbs.db
-db.json
-*.log
-node_modules/*
-!node_modules/hexo-theme-redefine/
 public/
 scaffolds/
+.github/
+.vs/
 source/
+themes/
 .deploy*/
-_multiconfig.yml
 
+.DS_Store
+Thumbs.db
+_multiconfig.yml
+db.json
+*.log
+
+node_modules/*
+!node_modules/hexo-theme-redefine/
+!node_modules/hexo-theme-redefine/source/
+!node_modules/hexo-theme-redefine/.github/
