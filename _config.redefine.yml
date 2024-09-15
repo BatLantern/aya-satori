@@ -11,7 +11,7 @@
 # Docs: https://redefine-docs.ohevan.com/basic/info
 info:
   # Site title
-  title: 蝠池茶室
+  title: 蝠池茶园
   # Author name
   author: 蝙蝠猫BatBattery
   # Site URL
@@ -84,6 +84,10 @@ global:
     post_pv: true # post page view
   # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
   single_page: true
+  # whether to fix flip-pages. If true, means retain banner to the 2nd pages, 3rd pages...etc
+  page_fix: true
+  # set fix-time
+  fix_time: 900 # (ms), empty means 1000ms
   # Whether to enable Preloader.
   preloader:
     enable: true
