@@ -11,6 +11,7 @@ Thumbs.db
 _multiconfig.yml
 db.json
 *.log
+_config.landscape.yml
 
 node_modules/*
 !node_modules/hexo-theme-redefine/
