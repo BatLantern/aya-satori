@@ -340,7 +340,7 @@ articles:
   # global opacity
   post_opacity:
     global_opacity: 0.9 # global opacity set [default:1.0]
-    toc_opacity: 0.7 # toc opacity set [default:0.0]
+    toc_opacity: 0.7 # toc opacity set [default:1.0]
   # Whether to enable copyright notice
   copyright:
     enable: true # Whether to enable
