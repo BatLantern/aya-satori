@@ -109,7 +109,7 @@ fontawesome: # Pro v6.2.1
   # Light version
   light: false
   # Duotone version
-  duotone: true
+  duotone: false
   # Sharp Solid version
   sharp_solid: false
 # FONTAWESOME <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -262,7 +262,7 @@ home:
         icon: fa-solid fa-link
       links: 
         path: /links
-        icon: fa-duotone fa-mug-hot
+        icon: fa-solid fa-mug-hot
       # Archives: 
       #   path: /archives 
       #   icon: fa-regular fa-archive # can be empty
