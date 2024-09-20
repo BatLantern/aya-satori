@@ -1,6 +1,491 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>每日一题#1——位运算</title>
+    <url>/everyday-quizs/everyquiz-1/</url>
+    <content><![CDATA[
+  <div class="note-large pink">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>寄语</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>时光流转，愿你终有一天能和你重要的人重逢。</strong><br> 　　　　　　　　  <em>——艾拉《可塑性记忆》</em></p>
+
+    </div>
+  </div>
+
+<hr>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>从今天开始会写blog，主要是记笔记以防后期忘记，同时也会记一些重要的知识点。</strong></p>
+<hr>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣签到题为<a href="https://leetcode.cn/problems/single-number-iii/description/"><em>260. 只出现一次的数字 III</em></a>，题目如下：</p>
+<blockquote>
+<p>给你一个整数数组 <code>nums</code>，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 <strong>任意顺序</strong> 返回答案。</p>
+<p>你必须设计并实现线性时间复杂度的算法且仅使用常量额外空间来解决此问题。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：nums = [1,2,1,3,2,5]</span><br><span class="line">输出：[3,5]</span><br><span class="line">解释：[5, 3] 也是有效的答案。</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<p>看到这道题，我脑子里第一个想法就是用ide的内置函数 。</p>
+<p>在C#中有个叫count()的函数，它的功能是计算序列中的元素数量。<br>如果不填参数，将返回元素的个数。</p>
+<p>若填写参数，这个函数的功能就会变成计算序列中满足某个条件时的元素数量。<br>这个时候，我就可以用这个函数来寻找需要的结果。</p>
+<hr>
+<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：内置函数"><a href="#方法一：内置函数" class="headerlink" title="方法一：内置函数"></a>方法一：内置函数</h4><div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span>[] <span class="title">SingleNumber</span>(<span class="params"><span class="built_in">int</span>[] nums</span>)</span> &#123;</span><br><span class="line">　<span class="built_in">int</span>[] answer = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];</span><br><span class="line">　<span class="built_in">int</span> j = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">//遍历整个数组并找到只出现一次的值</span></span><br><span class="line">　<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.Length; i++) &#123;</span><br><span class="line">　　<span class="built_in">int</span> count = nums.Count(n =&gt; n == nums[i]);</span><br><span class="line">    <span class="comment">//有则存入answer数组</span></span><br><span class="line">　　<span class="keyword">if</span>(count == <span class="number">1</span>) &#123;</span><br><span class="line">　　　answer[j] = nums[i];</span><br><span class="line">　　　j++;</span><br><span class="line">　　&#125;</span><br><span class="line">　&#125;</span><br><span class="line">　<span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>非常耗时间 <strong>(2748ms)</strong> 和空间 <strong>(44.10MB)</strong></p>
+<hr>
+<h4 id="方法二：哈希集合"><a href="#方法二：哈希集合" class="headerlink" title="方法二：哈希集合"></a>方法二：哈希集合</h4><p>基于内置函数真的太慢的情况下，我想了一个别的方法。</p>
+<p>我采用了哈希集合，它采用了一种数据结构来存储数字频率，如果要查询频率，它完全可以在常数时间内返回结果。</p>
+<p>所以先创建一个哈希集合，如果在这个哈希集合中能找到这个数字，则说明这个数字出现了两次；反之如果没寻找到，则说明这个数字只出现了一次。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span>[] <span class="title">SingleNumber</span>(<span class="params"><span class="built_in">int</span>[] nums</span>)</span> &#123;</span><br><span class="line">　HashSet&lt;<span class="built_in">int</span>&gt; numsCounts = <span class="keyword">new</span>();</span><br><span class="line">　<span class="comment">//遍历整个数组</span></span><br><span class="line">　<span class="keyword">foreach</span> (<span class="built_in">int</span> i <span class="keyword">in</span> nums) &#123;</span><br><span class="line">　　<span class="comment">//如果在集合中找到了重复元素，就把它剔除；如果没找到就添加进去</span></span><br><span class="line">　　<span class="keyword">if</span>(numsCounts.Contains(i))</span><br><span class="line">　　　numsCounts.Remove(i);</span><br><span class="line">　　<span class="keyword">else</span></span><br><span class="line">　　　numsCounts.Add(i);</span><br><span class="line">　　&#125;</span><br><span class="line">　<span class="comment">//以数组形式返回</span></span><br><span class="line">　<span class="keyword">return</span> numsCounts.ToArray();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>优化:</strong></p>
+<p>因为哈希集合是不包含重复元素的集合，所以如果有重复元素添加时他会跳过。</p>
+<p>Add方法中，如果添加的元素是重复的，他不会添加，只会返回一个false，告诉你添加失败</p>
+<p>所以就可以用这个性质对 <code>Foreach</code>进行优化，把循环内的代码变成只有一个if判断</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若添加失败(有重复)则把这个数字剔除</span></span><br><span class="line"><span class="keyword">if</span>(!numsCounts.Add(i))</span><br><span class="line">      numsCounts.Remove(i);</span><br></pre></td></tr></table></figure></div>
+
+<p>通过这种方法得出的结果和优化前差不多，但是更简洁。</p>
+<p>通过这种方法得出的结果，耗时 <strong>(152ms)</strong> 和空间 **(42.55MB)**。</p>
+<hr>
+<h4 id="方法三：位运算"><a href="#方法三：位运算" class="headerlink" title="方法三：位运算"></a>方法三：位运算</h4><p>因为这个题目的标签里面有位运算，所以我一直在想怎么用，但是一整天都没想出来。</p>
+<p>怎么办呢？那只好去翻翻题解了。</p>
+<ul>
+<li>X⊕X&#x3D;0(相同数字会抵消) 　　　 　　</li>
+<li>0⊕X&#x3D;X(0与某数异或等于那个数)</li>
+</ul>
+<p>异或运算的原理如上所示，现在将所有数字异或，必定得到一个不为0的数。</p>
+<p>若输入为 <code>[1, 2, 1, 3, 2, 5]</code>，则他们的异或结果应该是3^5(这两个数字就是我们要求的答案)</p>
+<p>然后将这个得出来的数的<strong>补码</strong>(一种负数二进制形式)和它自己(也就是刚刚异或的结果)进行<strong>与运算</strong>。</p>
+<p>这样可以得到只有最低位是1的二进制码，这个位就是两个只出现一次的数字在二进制表示上的差异。</p>
+<p>以下为步骤表格：看表格，3和5从右往左第一个差异是不是第二位不一样？所以异或结果的补码只有第二位为1。</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>步骤&#x2F;数字</th>
+<th>3</th>
+<th>5</th>
+<th>3^5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>二进制码</td>
+<td>011</td>
+<td>101</td>
+<td>110</td>
+</tr>
+<tr>
+<td>反码</td>
+<td>100</td>
+<td>010</td>
+<td>001</td>
+</tr>
+<tr>
+<td>补码</td>
+<td>101</td>
+<td>011</td>
+<td>010</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>现在就可以对原数组的每一个数进行与运算后分类，有0的分为一组，有1的分为一组。</p>
+<p>以下是分类结果：针对输入为 <code>[1, 2, 1, 3, 2, 5]</code>的为例</p>
+<ul>
+<li>1：2, 2, 3</li>
+<li>0：1, 1, 5</li>
+</ul>
+<p>经过”分治”的过程，问题转化成了简单的 **”在偶数次数字里找到只出现一次的元素”**。</p>
+<p>现在只要遵循异或的运算规则，将一个类总的所有元素全部异或，偶数次的元素会被相互抵消，然后就会剩下只出现一次的元素了。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span>[] <span class="title">SingleNumber</span>(<span class="params"><span class="built_in">int</span>[] nums</span>)</span> &#123;</span><br><span class="line">　<span class="comment">//定义</span></span><br><span class="line">　<span class="built_in">int</span> numsxor = <span class="number">0</span>;</span><br><span class="line">　<span class="built_in">int</span>[] res = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];</span><br><span class="line">　<span class="comment">//所有元素异或</span></span><br><span class="line">　<span class="keyword">foreach</span> (<span class="built_in">int</span> num <span class="keyword">in</span> nums)</span><br><span class="line">　　numsxor ^= num;</span><br><span class="line">　<span class="comment">//异或结果和补码与运算，得到最低位为1的二进制码</span></span><br><span class="line">　<span class="comment">//就是取最右边的那个1，这个1保留，其他全改成0</span></span><br><span class="line">　<span class="built_in">int</span> answer = numsxor &amp; (-numsxor);</span><br><span class="line">　<span class="comment">//用这个码对数组分类</span></span><br><span class="line">　<span class="keyword">foreach</span> (<span class="built_in">int</span> num <span class="keyword">in</span> nums)</span><br><span class="line">　&#123;</span><br><span class="line">　　<span class="comment">//全部异或抵消得到结果</span></span><br><span class="line">　　<span class="keyword">if</span> ((answer &amp; num) == <span class="number">0</span>)</span><br><span class="line">　　　res[<span class="number">0</span>] ^= num;</span><br><span class="line">　　<span class="keyword">else</span></span><br><span class="line">　　　res[<span class="number">1</span>] ^= num;</span><br><span class="line">　&#125;</span><br><span class="line">　<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>通过这种方法得出的结果，耗时 <strong>(132ms)</strong> 和空间 **(42.39MB)**。</p>
+<hr>
+<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3><p>今天是第一天，希望自己能坚持下去。</p>
+<hr>
+<p><strong>笔记完毕 编辑完毕时间CST 10.16 23:55</strong></p>
+<p>最后修改于8.15 00:05</p>
+]]></content>
+      <categories>
+        <category>每日一题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>计算机</tag>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日一题#2——位运算数论</title>
+    <url>/everyday-quizs/everyquiz-2/</url>
+    <content><![CDATA[
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>文章寄语</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>请别在意。我是旅人，得继续旅行才行。</strong><br> 　　　　　<em>——伊蕾娜《魔女之旅》</em></p>
+
+    </div>
+  </div>
+
+<hr>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>每日一题的记录点</strong>。鉴于今天的题目比较简单，所以内容可能较少。</p>
+<hr>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣签到题为<a href="https://leetcode.cn/problems/sum-multiples/description/"><em>2652. 倍数求和</em></a>，题目如下：</p>
+<blockquote>
+<p>给你一个正整数 n，请你计算在 <code>[1，n]</code>范围内能被 3、5、7整除的所有整数之和。</p>
+<p>返回一个整数，用于表示给定范围内所有满足约束条件的数字之和。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：n = 7</span><br><span class="line">输出：21</span><br><span class="line">解释：在 [1, 7] 范围内能被 3、5、7 整除的所有整数分别是 3、5、6、7 。数字之和为 21 。</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<p>看到这里，想出枚举法，即遍历数字后找出对应满足条件的数字。再看看范围，n在1~1000之间.</p>
+<hr>
+<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：枚举遍历"><a href="#方法一：枚举遍历" class="headerlink" title="方法一：枚举遍历"></a>方法一：枚举遍历</h4><div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SumOfMultiples</span>(<span class="params"><span class="built_in">int</span> n</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//遍历，找出所有3,5,7倍数的数字后累加</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span> || i % <span class="number">7</span> == <span class="number">0</span>)</span><br><span class="line">            ans += i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure></div>
+<p>耗费时间 <strong>(16ms)</strong> 和空间 **(25.40MB)**。</p>
+<hr>
+<h4 id="方法二：数学思想"><a href="#方法二：数学思想" class="headerlink" title="方法二：数学思想"></a>方法二：数学思想</h4><p>看了题解研究了半天，终于知道怎么把时间复杂度降为O(1)了。这个方法很巧妙。</p>
+<p>如果说输入的数是n&#x3D;20时，可以先把答案(也就是3,5,7的倍数的数)挑出来讨论：</p>
+<ul>
+<li>3的倍数: 3, 6, 9, 12, 15, 18</li>
+<li>5的倍数: 5, 10, 15, 20</li>
+<li>7的倍数: 7, 14</li>
+</ul>
+<p>这些就是答案，然后会发现这是等差数列。既然是等差数列，当然就可以用等差数列的求和公式来计算他们的和。</p>
+<ul>
+<li><em>一个等差数列的和</em> &#x3D; ( 首项 + 末项 ) * 项数 &#x2F; 2</li>
+</ul>
+<p>现在我们有了首项(求几的倍数就是几)，那末项和项数呢?</p>
+<p>这就可以用 [n&#x2F;首项]来得出n范围内最大的元素数量了(就是项数)，然后再用这个结果乘以其首项，即为不大于n的最大倍数结果。比如[n&#x3D;20]时，[20&#x2F;3&#x3D;6]，则6即为项数，而[6*3&#x3D;18]即为末项。</p>
+<p>现在我们可以正常使用等差公式了，首项为n，末项为[(n&#x2F;首项)*首项]，项数为[n&#x2F;首项]。</p>
+<p>为了方便我们将 [n&#x2F;首项]记为counts。这样就可以算了。现在公式变成了以下这个：</p>
+<ul>
+<li><em>一个等差数列的和</em> &#x3D; ( 首项 + counts * 首项 ) * counts &#x2F; 2</li>
+</ul>
+<p>如果传入两个数，分别是首项和n，记为a和b的话，代码应该这样：</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//sum函数即为我们要求的这个等差数列的和</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Sum</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> counts = b / a;</span><br><span class="line">    <span class="built_in">int</span> result = (a + counts * a) * counts / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>现在传入3，5，7和n就可以了。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>末项求值时，不能对这个算式进行化简,因为它是取整过的数，而且他的目的仅仅是找到小于n的最大倍数。</li>
+<li>两者本质完全不同，即使是换成高精度的浮点计算也不行。</li>
+</ul>
+<p>然后按照小学的知识，比如这个：</p>
+<blockquote>
+<p><strong>喜欢数学的有10人 喜欢英语的有5人 喜欢科学的有12人</strong></p>
+<p><strong>同时喜欢数学和英语的有2人 英语和科学的有2人 数学和科学的有5人</strong></p>
+<p><strong>三门学科同时喜欢的有1人</strong></p>
+<p>现在问你只喜欢一门学科的人有多少？</p>
+</blockquote>
+<p>这就是<strong>容斥定理</strong>，这个题只要把一门学科的全加起来，减去两门学科重叠的人数。因为三门学科的人在做差的时候被减去了两次，所以要把他加回来。所以这个问题的答案就是[10+5+12-2-2-5+1&#x3D;19人]。</p>
+<p>所以这个程序也是一样的道理，把3，5，7的倍数加起来，减去两两倍数的乘积，然后再把三个数的乘积(105)加回去，就是最终的答案了。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//sum函数即为我们要求的这个等差数列的和</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Sum</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> counts = b / a;</span><br><span class="line">    <span class="built_in">int</span> result = (a + a * counts) * counts / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//用容斥定理求出最终的结果</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SumOfMultiples</span>(<span class="params"><span class="built_in">int</span> n</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> result = Sum(<span class="number">3</span>, n) + Sum(<span class="number">5</span>, n) + Sum(<span class="number">7</span>, n) - Sum(<span class="number">15</span>, n) - Sum(<span class="number">21</span>, n) - Sum(<span class="number">35</span>, n) + Sum(<span class="number">105</span>, n);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>通过这种方法得出的结果，耗时 <strong>(20ms)</strong> 和空间 **(25.37MB)**。</p>
+<hr>
+<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3><p>暂无留言</p>
+<hr>
+<p><strong>笔记完毕 编辑完毕时间CST 10.17 23:44</strong></p>
+<p>最后修改于8.15 00:05</p>
+]]></content>
+      <categories>
+        <category>每日一题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>计算机</tag>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日一题#3——二分运算</title>
+    <url>/everyday-quizs/everyquiz-3/</url>
+    <content><![CDATA[
+  <div class="note-large blue">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>文章寄语</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>其实美丽的故事都是没有结局的，只因为它没有结局所以才会美丽。</strong><br>　　　　　　　　　　　　　　　　　　　　<em>——《萤火之森》</em></p>
+
+    </div>
+  </div>
+
+<hr>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>每日一题的记录点</strong>.</p>
+<hr>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣题为 <a href="https://leetcode.cn/problems/search-insert-position/description/"><em>35.搜索插入位置</em></a>，题目如下：</p>
+<blockquote>
+<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。<br>如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 5</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<p>立马想出二分查找法。再看看题目范围和提示：无重复元素升序排列数组.</p>
+<hr>
+<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：内置函数"><a href="#方法一：内置函数" class="headerlink" title="方法一：内置函数"></a>方法一：内置函数</h4><p>在C#中，有很多可以排序的数据类型，这里仅仅只需要使用列表就足够了。而且这道题无非就是两个子问题：</p>
+<ul>
+<li>如果原有数组中存在该数，则返回其索引。</li>
+<li>如果原有数组中不存在该数，则返回其应该被插入的位置。</li>
+</ul>
+<p>所以我们先把这个数组转换成列表，查找有无该数。如果没有，就把它放到列表里，然后排序后输出索引。</p>
+<p>因为我们把它转换成了一个新的数据类型列表，所以占用了n位列表的空间，空间复杂度是O(n)。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SearchInsert</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//数组转列表</span></span><br><span class="line">    List&lt;<span class="built_in">int</span>&gt; sorted = nums.ToList();</span><br><span class="line">    <span class="comment">//如果存在就返回索引 indexof时返回索引的函数</span></span><br><span class="line">    <span class="keyword">if</span> (sorted.Contains(target))</span><br><span class="line">        <span class="keyword">return</span> sorted.IndexOf(target);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//不存在就加入 排序并输出最后的索引</span></span><br><span class="line">        sorted.Add(target);</span><br><span class="line">        <span class="comment">//因为内置排序函数用了快速排序，所以时间复杂度是nlogn</span></span><br><span class="line">        sorted.Sort();</span><br><span class="line">        <span class="keyword">return</span> sorted.IndexOf(target);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>通过这种方法得出的结果，耗时 <strong>(76ms)</strong> 和空间 **(38.13MB)**。</p>
+<hr>
+<h4 id="方法二：二分运算"><a href="#方法二：二分运算" class="headerlink" title="方法二：二分运算"></a>方法二：二分运算</h4><p>所谓二分运算，就是把东西一分为二.</p>
+<p>一般就是先在有序数组的最开始和最末尾设定两个扫描头，然后把左边和右边加起来除以二，也就是取中点。</p>
+<p>然后我们判断，如果这个数大于这个中点，说明在右半边，然后我们扔掉左半边不要的，循环反复。反之就扔掉右半边。</p>
+<p>只不过有一点不一样，如果数组中不存在这个数，我们需要返回的是不大于这个数的最大的数的索引，这个就是他需要被插入的位置。而不是那个中点mid了</p>
+<p>因为这里没有开辟新的类型和新的数组，所以只占用了常数量级空间，空间复杂度是O(1)。</p>
+<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SearchInsert</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//在开头和结尾定义扫描头</span></span><br><span class="line">    <span class="built_in">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">int</span> right = nums.Length - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//设定约束条件</span></span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//如果这个数字在数组中存在就返回他的索引</span></span><br><span class="line">        <span class="keyword">if</span> (target == nums[mid])</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="comment">//不然就按照二分模板，在左边扔掉右边，在右边扔掉左边</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (target &lt;= nums[mid])</span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果这个数字在数组中不存在就返回他的插入位置靠左的索引</span></span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>前面提到的[left+(right-left)&#x2F;2]，这是一种防止溢出的手段，如果数字太大，加起来可能会爆int的范围，所以就这么写。这么写和[(left+right)&#x2F;2]相同。<del>具体什么原理我也不太清楚。</del></p>
+<p>通过这种方法得出的结果，耗时 <strong>(84ms)</strong> 和空间 **(37.59MB)**。</p>
+<hr>
+<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3><p>摸鱼摸鱼摸鱼摸鱼摸鱼。</p>
+<hr>
+<p><strong>笔记完毕 编辑完毕时间CST 10.25 23:26</strong></p>
+<p>最后修改于8.15 00:05</p>
+]]></content>
+      <categories>
+        <category>每日一题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>计算机</tag>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>刷题笔记#4——数列排列数论</title>
+    <url>/everyday-quizs/everyquiz-4/</url>
+    <content><![CDATA[
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>文章寄语</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>在末日中，人们总想寻找希望，但要真有希望的话，那还叫末日吗？</strong><br>　　　　　　　　　　　　　　　　　　　　<em>——《灵笼》</em></p>
+
+    </div>
+  </div>
+
+<hr>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>现在起每日一题更名为刷题笔记</strong> </p>
+<p>好久没写笔记了，加上最近比较空遂用hexo的主题搭了一个开源博客，以后有什么都会写在这里。</p>
+<hr>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天要记录的题目是 <a href="https://leetcode.cn/problems/can-make-arithmetic-progression-from-sequence/description/"><em>1502. 判断能否形成等差数列</em></a></p>
+<blockquote>
+<p>给你一个数字数组arr 。<br>如果一个数列中，任意相邻两项的差总等于同一个常数，那么这个数列就称为等差数列<br>如果可以重新排列数组形成等差数列，请返回 true否则，返回 false</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入: arr = [3,5,1]</span><br><span class="line">输出: true</span><br><span class="line">解释：对数组重新排序得到[1,3,5]或者[5,3,1]，任意相邻两项的差分别为2或-2，可以形成等差数列。</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<p>虽然这道题是简单题，但是有两种方法值得我们去思考。</p>
+<p>第一种是先排序后判断，也就是常规的思路。第二种是用数论的方法，可以直接判断，可以先判断在排序。</p>
+<hr>
+<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：先排序后判断-模拟"><a href="#方法一：先排序后判断-模拟" class="headerlink" title="方法一：先排序后判断(模拟)"></a>方法一：先排序后判断(模拟)</h4><p>因为等差数列，我们把它排好序后，是否等差我们一眼可知。</p>
+<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>我们可以直接使用c++的内置函数sort()进行排序，因为等差数列的条件是相邻两项的差总等于同一个常数。所以为我们在排序完成后，还需要遍历一遍数据。</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canMakeArithmeticProgression</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//对数组进行排序</span></span><br><span class="line">        <span class="built_in">sort</span>(arr.<span class="built_in">begin</span>(), arr.<span class="built_in">end</span>());</span><br><span class="line">        <span class="comment">//遍历数组进行判断</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; arr.<span class="built_in">size</span>() - <span class="number">1</span>; ++i) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//如果中间项和左右两边的差值不是一个恒定的数，则不是等差数列，遂跳出</span></span><br><span class="line">            <span class="keyword">if</span> (arr[i] * <span class="number">2</span> != arr[i - <span class="number">1</span>] + arr[i + <span class="number">1</span>]) </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>因为排序的时间代价为O(nlog⁡n)，遍历序列的时间代价是 O(n)，故渐进时间复杂度为 O(nlog⁡n+n)&#x3D;O(nlog⁡n)</strong></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.freeimg.cn/i/2024/06/14/666c3fbd4d257.png"
+                      alt="我在c++没有写这个方法,因为我c#写过了(,所以贴张c#的图"
+                ><figcaption>我在c++没有写这个方法,因为我c#写过了(,所以贴张c#的图</figcaption></figure></p>
+<hr>
+<h4 id="方法二：直接判断且不需要排序-数论"><a href="#方法二：直接判断且不需要排序-数论" class="headerlink" title="方法二：直接判断且不需要排序(数论)"></a>方法二：直接判断且不需要排序(数论)</h4><p><strong>等差数列的成立条件如下：</strong></p>
+<ul>
+<li>①相邻两项的差值等于一个常数，也就是我们说的公差d</li>
+<li>②公差d必须为整数(仅对本题而言，因为输入是整数，公差不会是小数)</li>
+<li>③全部的项中不会存在重复的数据</li>
+<li>④公差d可以为0，也就是所有项都是同一个数</li>
+</ul>
+<h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>我们先对这个数列进行一次遍历，在题目所给的一串待处理数字中找到最大值和最小值。</p>
+<p>为什么要找这个最大值和最小值呢？我们假设这串数字就是等差数列，则这个最大值和最小值就是数列的末项和首项。</p>
+<p>知道了最大值和最小值，项数我们也知道了(输入几项就是几),我们可以套公式求出公差d。</p>
+<ul>
+<li>公差d &#x3D; (末项 - 首项)&#x2F;(项数 - 1)</li>
+</ul>
+<p><strong>现在公差d已经被算出来了，对算出来的这个公差d进行一次判断</strong></p>
+<ul>
+<li>若首项 &#x3D; 末项(最大值等于最小值)，说明数列每一项都一样，直接返回true，不用求出d。</li>
+<li>若公差是小数，则不满足成立条件②，直接返回false。</li>
+</ul>
+<p><strong>接下来我们倒序再次遍历一遍这个数列。求出每一项减去首项然后除以公差d的商。</strong></p>
+<p>为什么这么做？因为在一个真正的等差数列中，每一项减去首项的差，对于公差d都是成倍数关系的。</p>
+<ul>
+<li>等差数列通项公式：An &#x3D; 首项 + (第n项 - 1) * 公差d</li>
+</ul>
+<p>首项已经知道了，就是数组的最小值，公差我们也算出来了，An是第n项的值，也知道了。</p>
+<p>现在的目的就是试图求n，即这个数字在整个数列中的位次。</p>
+<p>但是因为有成立条件③的存在，直接判断会导致这个问题。所以我们开一个哈希集合，哈希集合不可以存放重复数据，正好可以判断。开其他的也可以。</p>
+<ul>
+<li>若n是小数，直接返回false。因为没有第小数项，除非他在另一个次元.返回false。</li>
+<li>若n在哈希中存在，说明数列内有重复，不满足条件③，返回false。</li>
+</ul>
+<p>若当前数字通过两者，都坚持下来了，说明这个数字独立，加入到集合里。查看下一个数字。</p>
+<p><strong>如果循环结束还没有返回false，说明数列满足等差数列成立的所有条件。它确实是等差数列。返回true。</strong></p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canMakeArithmeticProgression</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> arrlen = arr.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> min = <span class="number">1000001</span>;</span><br><span class="line">        <span class="type">int</span> max = <span class="number">-1000001</span>;</span><br><span class="line">        <span class="type">int</span> diff, result;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; numset;</span><br><span class="line">        <span class="comment">//有内置的函数可以直接取最大最小值，我这里没用</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= arrlen; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &lt; min)</span><br><span class="line">                min = arr[i];</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &gt; max)</span><br><span class="line">                max = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//公差为0时</span></span><br><span class="line">        <span class="keyword">if</span> (min == max)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//公差是小数，即无法整除</span></span><br><span class="line">        <span class="keyword">if</span> ((max - min) % arrlen != <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//求公差</span></span><br><span class="line">        diff = (max - min) / arrlen;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = arrlen; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//位次是小数</span></span><br><span class="line">            <span class="keyword">if</span> ((arr[i] - min) % diff != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                result = (arr[i] - min) / diff;</span><br><span class="line">                <span class="comment">//判断哈希表里是否已经存在数字</span></span><br><span class="line">                <span class="keyword">if</span>(numset.<span class="built_in">count</span>(result) == <span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="comment">//没有就插入这个数字</span></span><br><span class="line">                numset.<span class="built_in">insert</span>(result);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.freeimg.cn/i/2024/06/14/666c4d7146040.png"
+                      alt="通过代码图"
+                ><figcaption>通过代码图</figcaption></figure></p>
+<h5 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h5><p>其实这道题到这里就结束了，都知道了这几个元素在排序后数列的确切位置。</p>
+<p>其实就可以反向排序了。</p>
+<hr>
+<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3>
+  <div class="note-large purple">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>文章结语</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>梦比现实更易侵蚀人的精神，刻意准备的梦是危险的。</strong><br>　　　　　　　　　　　　　　　　　　　　<em>——东方绀珠传 ~ Legacy of Lunatic Kingdom.</em></p>
+
+    </div>
+  </div>
+
+<hr>
+<p><strong>笔记完毕 编辑完毕时间CST 6.14 22:35</strong></p>
+<p>最后修改于8.15 00:20</p>
+]]></content>
+      <categories>
+        <category>每日一题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>计算机</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小蝠猫学算法#1——迭代和递归</title>
+    <url>/hellonotes/hellonotes-1/</url>
+    <content><![CDATA[
+  <div class="note-large orange">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>文章寄语</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>且视他人之疑目如盏盏鬼火，大胆地去走你的夜路。</strong><br>　　　　　　　　　　　　　　　　　　　　<em>—— 史铁生&lt;&lt;病隙碎笔&gt;&gt;</em></p>
+
+    </div>
+  </div>
+
+<hr>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>这里是新开的坑！以后会把关于数据结构与算法的知识笔记写在这里</p>
+<p><strong>数据结构笔记第一篇。迭代和递归[考纲无此内容]</strong></p>
+<p>知识点大致按照《Hello!算法》书籍进行。因为数据结构与算法在非常多的考试中都有。</p>
+<p>本人自知学疏才浅，一定有许多错误，恳请批评指正。</p>
+<p><strong>下面是几个上述提到的链接：</strong></p>
+<a class="button  regular" href='https://www.hello-algo.com' title='《Hello!算法》网页版'><i class='fa-brands fa-codepen'></i> 《Hello!算法》网页版</a>
+
+<a class="button  regular" href='https://ncre.neea.edu.cn/html1/folder/1507/770-1.htm' title='全国计二级官网'><i class='fa-brands fa-codepen'></i> 全国计二级官网</a>
+
+<a class="button  regular" href='https://www.luogu.com.cn/training/list' title='洛谷官网-刷题可用'><i class='fa-brands fa-codepen'></i> 洛谷官网-刷题可用</a>
+
+<p><strong>星空如此璀璨，想摘几颗星星。出发吧</strong></p>
+<hr>
+<h3 id="第一节-迭代和递归"><a href="#第一节-迭代和递归" class="headerlink" title="第一节 迭代和递归"></a>第一节 迭代和递归</h3><h4 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h4><h5 id="迭代-for结构"><a href="#迭代-for结构" class="headerlink" title="迭代(for结构)"></a>迭代(for结构)</h5><p>迭代在汉语词典中的大概意思是”更相代替；轮换”。生活中也能听到类似”电子产品迭代更新”的话语.</p>
+<p>在计算机里也是如此，它是一种重复执行某个任务的东西，一直运行直到条件不满足。</p>
+<p>在现实中大概可以想象成把书放上书架，书还没放完就继续放，放完了就停止。</p>
+<p>如果提前知道有几本书需要放置，就可以使用for结构。每次放上一本书后，都需要看看还有没有书。所以判断了n(书籍数量)次。</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">forloop</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//原来书堆里有几本书？假设是5本</span></span><br><span class="line">    <span class="type">int</span> bookheap = <span class="number">5</span>；</span><br><span class="line">    <span class="comment">//有5本书就是放置5次呗。</span></span><br><span class="line">    <span class="comment">//i值任取，只要次数对就行。但为了看着舒服，i还是从0开始计数把。</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//放好一本书时，书堆的书就少一本。</span></span><br><span class="line">        bookheap--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bookheap; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>放好了，书堆里没有书了(归0),跳出循环同时程序结束。(虽然这段代码有点莫名其妙,说不定以后我变笨蛋了还可以看看x)</p>
+<h5 id="迭代-while结构"><a href="#迭代-while结构" class="headerlink" title="迭代(while结构)"></a>迭代(while结构)</h5><p>还是那一包书，但现在状况变了，我不知道这一包书到底有多少本，我懒得数。也就是不知道有几本书需要放置，这就可以用while结构。</p>
+<p>这种办法是放完就停。但每次放上一本书后，也是需要看看还有没有书的。所以同样也是判断了n(书籍数量)次。</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">forloop</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//原来书堆里有几本书？</span></span><br><span class="line">    <span class="type">int</span> bookheap = n；</span><br><span class="line">    <span class="comment">//书堆里还有书的话就继续放</span></span><br><span class="line">    <span class="keyword">while</span>(bookheap &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//放好一本书时，书堆的书就少一本。</span></span><br><span class="line">        bookheap--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bookheap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>放好了，书堆里没有书了(归0),跳出循环同时程序结束。</p>
+<p><strong>两个循环的区别:</strong></p>
+<ul>
+<li>①for偏向紧凑，变量i和模具一样限制死了。while偏向灵活，可以拿捏变量i(比如先加再乘这种for不好操作的)</li>
+<li>②在知道操作次数的情况下，for的代码比while简洁，避免大量计数器和flag等变量出现。</li>
+<li>③大部分情况两者差不多，按实际情况判断。</li>
+<li>for要写三个条件，本来就长，有时候条件复杂点更长。真不如while().</li>
+</ul>
+<h5 id="迭代-嵌套"><a href="#迭代-嵌套" class="headerlink" title="迭代(嵌套)"></a>迭代(嵌套)</h5><p>纯套娃，一般套娃都是用变量i和j搞定。就两层娃。</p>
+<p>把它看成长方形就好了，或者看成表格。你要数格子的话，总是长(格子数)*宽(格子数)把？所以需要判断[i的终值*j的终值]次。</p>
+<p>如果它还能套，套套套甚至把26个字母都用完了(那确实有点),那也没关系，把它26个字母所代表的变量的终值全部乘起来就好了。</p>
+<p>那这个算是，26维物体了，我找不到例子。假如i是1-5，j是1-6，k是1-7的话，就是判断了5*6*7次。</p>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><p>迭代在前面比较简单，但是递归要考虑的就很多了。</p>
+<h5 id="递归的意义"><a href="#递归的意义" class="headerlink" title="递归的意义"></a>递归的意义</h5><p>递归就是调用自己本身,递归类似套娃循环也有深度一说，且深度过大会导致栈溢出问题。</p>
+<p>它主要由两部分组成：</p>
+<ul>
+<li>递归的递，把东西传递到最深度。</li>
+<li>递归的归，把东西从最深处加工后送出来。</li>
+</ul>
+<p>就和工厂里某个产品的制作工序一样。放入原料，送入机器最里层，从里到外逐层加工。</p>
+<p>但是必须要有结束条件，如果没有结束条件，他会一直运行下去。</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">recur</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 这个是终止条件</span></span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 把原料送进去</span></span><br><span class="line">    <span class="type">int</span> res = <span class="built_in">recur</span>(n - <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 加工后吐出成品</span></span><br><span class="line">    <span class="keyword">return</span> n + res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.freeimg.cn/i/2024/06/27/667d58335bf11.png"
+                      alt="步进过程图"
+                ><figcaption>步进过程图</figcaption></figure></p>
+<h5 id="调用栈操作"><a href="#调用栈操作" class="headerlink" title="调用栈操作"></a>调用栈操作</h5><p>函数在没有返回最终结果之前，每一层都会占用内存。这个占用叫栈帧空间，函数最终返回后释放。</p>
+<p>因为栈分到的内存是有限的，如果占满了就栈溢出了。</p>
+<h5 id="尾递归使用"><a href="#尾递归使用" class="headerlink" title="尾递归使用"></a>尾递归使用</h5><p>如果函数在返回前的最后一句才调用，也就是把递归写在return里，就可以被软件(编译器)优化。从而节省了开销。(其实没用，大部分软件没法优化，仅是理论上而言)</p>
+<p>而普通递归呢，就是写在return前面，会捞一点，因为要先操作(递)，在返回过程中(归)还要操作。不如尾递归，它只要操作后(递)直接返回就行，不用额外操作。</p>
+<h5 id="递归树使用"><a href="#递归树使用" class="headerlink" title="递归树使用"></a>递归树使用</h5><p>其实递归的本质就是把大东西切分成小东西。和把问题简单化的分治一致。</p>
+<p>就和斐波那契数列一样，因为第n项是由前两项的和而来的，所以是两条分支。</p>
+<p>而这两条分支的子节点又是由前两项的和而来的，所以又可以分成两条支线，最后变成一棵庞大的树。</p>
+<p><em>其实，这棵树不仅是递归树，我感觉还是满二叉树？</em></p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.hello-algo.com/chapter_computational_complexity/iteration_and_recursion.assets/recursion_tree.png"
+                      alt="斐波那契数列的递归树"
+                ><figcaption>斐波那契数列的递归树</figcaption></figure></p>
+<h4 id="迭代-递归对比"><a href="#迭代-递归对比" class="headerlink" title="迭代&#x2F;递归对比"></a>迭代&#x2F;递归对比</h4><p>其实两个之间也差不多。</p>
+<p><strong>迭代和递归区别:</strong></p>
+<ul>
+<li>①迭代没有调用的开销；递归每次调用都有时间开销。</li>
+<li>②迭代有固定调用次数；递归不确定，按深度计算。可能非常大.</li>
+</ul>
+<p>书籍上还提到了递归和栈之间的联系。说什么先入后出和栈帧这种难懂的东西。</p>
+<p>我的理解是就像一个车床要加工木棍，你得先把原材料(一根木头)放进去。</p>
+<p>放进去的过程中木棒会占用车床的内部空间，也就是逐渐开辟内存的过程。同时这也是”递”的过程。</p>
+<p>然后机器会开始加工。这时候原来放进去的”头”就会变成”尾”。且加工途中不会返回去处理处理好的部分。</p>
+<p>加工完毕以后需要把产物退回。这时车床的内部空间就被腾出来了。即逐渐恢复内存空间的过程，同时这也是”归”的过程。</p>
+<p>因为车床底部是封死的，不是中空的。所以这种工作机制也就是“先入后出”。(中空的”先入先出”为队列)</p>
+<p><figure class="image-caption"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img.picui.cn/free/2024/06/29/667f82c2c551b.jpg"
+                      alt="递归和栈之间的联系"
+                ><figcaption>递归和栈之间的联系</figcaption></figure></p>
+<hr>
+<h3 id="总结和结语"><a href="#总结和结语" class="headerlink" title="总结和结语"></a>总结和结语</h3>
+  <div class="note-large green">
+    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
+      <p>文章结语</p>
+
+    </div>
+    <div class="notel-content">
+      <p><strong>让我成为你的双眼，把那世界万千，描绘在你面前。</strong><br>　　　　　　　　　　　　　　　　　　　　<em>——狐妖小红娘</em></p>
+
+    </div>
+  </div>
+
+<hr>
+<p><strong>笔记完毕 编辑完毕时间CST 6.28 02:51</strong></p>
+<p>最后修改于8.15 00:30</p>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+        <category>&lt;Hello!算法&gt;笔记</category>
+      </categories>
+      <tags>
+        <tag>计算机</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小蝠猫学算法#2——算法概念</title>
     <url>/hellonotes/hellonotes-2/</url>
     <content><![CDATA[
@@ -145,8 +630,8 @@
         <category>&lt;Hello!算法&gt;笔记</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>计算机</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -332,8 +817,8 @@
         <category>&lt;Hello!算法&gt;笔记</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>计算机</tag>
+        <tag>数据结构</tag>
         <tag>考试</tag>
       </tags>
   </entry>
@@ -521,561 +1006,9 @@
         <category>&lt;Hello!算法&gt;笔记</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>计算机</tag>
+        <tag>数据结构</tag>
         <tag>考试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>小蝠猫学算法#1——迭代和递归</title>
-    <url>/hellonotes/hellonotes-1/</url>
-    <content><![CDATA[
-  <div class="note-large orange">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>文章寄语</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>且视他人之疑目如盏盏鬼火，大胆地去走你的夜路。</strong><br>　　　　　　　　　　　　　　　　　　　　<em>—— 史铁生&lt;&lt;病隙碎笔&gt;&gt;</em></p>
-
-    </div>
-  </div>
-
-<hr>
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>这里是新开的坑！以后会把关于数据结构与算法的知识笔记写在这里</p>
-<p><strong>数据结构笔记第一篇。迭代和递归[考纲无此内容]</strong></p>
-<p>知识点大致按照《Hello!算法》书籍进行。因为数据结构与算法在非常多的考试中都有。</p>
-<p>本人自知学疏才浅，一定有许多错误，恳请批评指正。</p>
-<p><strong>下面是几个上述提到的链接：</strong></p>
-<a class="button  regular" href='https://www.hello-algo.com' title='《Hello!算法》网页版'><i class='fa-brands fa-codepen'></i> 《Hello!算法》网页版</a>
-
-<a class="button  regular" href='https://ncre.neea.edu.cn/html1/folder/1507/770-1.htm' title='全国计二级官网'><i class='fa-brands fa-codepen'></i> 全国计二级官网</a>
-
-<a class="button  regular" href='https://www.luogu.com.cn/training/list' title='洛谷官网-刷题可用'><i class='fa-brands fa-codepen'></i> 洛谷官网-刷题可用</a>
-
-<p><strong>星空如此璀璨，想摘几颗星星。出发吧</strong></p>
-<hr>
-<h3 id="第一节-迭代和递归"><a href="#第一节-迭代和递归" class="headerlink" title="第一节 迭代和递归"></a>第一节 迭代和递归</h3><h4 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h4><h5 id="迭代-for结构"><a href="#迭代-for结构" class="headerlink" title="迭代(for结构)"></a>迭代(for结构)</h5><p>迭代在汉语词典中的大概意思是”更相代替；轮换”。生活中也能听到类似”电子产品迭代更新”的话语.</p>
-<p>在计算机里也是如此，它是一种重复执行某个任务的东西，一直运行直到条件不满足。</p>
-<p>在现实中大概可以想象成把书放上书架，书还没放完就继续放，放完了就停止。</p>
-<p>如果提前知道有几本书需要放置，就可以使用for结构。每次放上一本书后，都需要看看还有没有书。所以判断了n(书籍数量)次。</p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">forloop</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//原来书堆里有几本书？假设是5本</span></span><br><span class="line">    <span class="type">int</span> bookheap = <span class="number">5</span>；</span><br><span class="line">    <span class="comment">//有5本书就是放置5次呗。</span></span><br><span class="line">    <span class="comment">//i值任取，只要次数对就行。但为了看着舒服，i还是从0开始计数把。</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//放好一本书时，书堆的书就少一本。</span></span><br><span class="line">        bookheap--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bookheap; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>放好了，书堆里没有书了(归0),跳出循环同时程序结束。(虽然这段代码有点莫名其妙,说不定以后我变笨蛋了还可以看看x)</p>
-<h5 id="迭代-while结构"><a href="#迭代-while结构" class="headerlink" title="迭代(while结构)"></a>迭代(while结构)</h5><p>还是那一包书，但现在状况变了，我不知道这一包书到底有多少本，我懒得数。也就是不知道有几本书需要放置，这就可以用while结构。</p>
-<p>这种办法是放完就停。但每次放上一本书后，也是需要看看还有没有书的。所以同样也是判断了n(书籍数量)次。</p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">forloop</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//原来书堆里有几本书？</span></span><br><span class="line">    <span class="type">int</span> bookheap = n；</span><br><span class="line">    <span class="comment">//书堆里还有书的话就继续放</span></span><br><span class="line">    <span class="keyword">while</span>(bookheap &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//放好一本书时，书堆的书就少一本。</span></span><br><span class="line">        bookheap--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bookheap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>放好了，书堆里没有书了(归0),跳出循环同时程序结束。</p>
-<p><strong>两个循环的区别:</strong></p>
-<ul>
-<li>①for偏向紧凑，变量i和模具一样限制死了。while偏向灵活，可以拿捏变量i(比如先加再乘这种for不好操作的)</li>
-<li>②在知道操作次数的情况下，for的代码比while简洁，避免大量计数器和flag等变量出现。</li>
-<li>③大部分情况两者差不多，按实际情况判断。</li>
-<li>for要写三个条件，本来就长，有时候条件复杂点更长。真不如while().</li>
-</ul>
-<h5 id="迭代-嵌套"><a href="#迭代-嵌套" class="headerlink" title="迭代(嵌套)"></a>迭代(嵌套)</h5><p>纯套娃，一般套娃都是用变量i和j搞定。就两层娃。</p>
-<p>把它看成长方形就好了，或者看成表格。你要数格子的话，总是长(格子数)*宽(格子数)把？所以需要判断[i的终值*j的终值]次。</p>
-<p>如果它还能套，套套套甚至把26个字母都用完了(那确实有点),那也没关系，把它26个字母所代表的变量的终值全部乘起来就好了。</p>
-<p>那这个算是，26维物体了，我找不到例子。假如i是1-5，j是1-6，k是1-7的话，就是判断了5*6*7次。</p>
-<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><p>迭代在前面比较简单，但是递归要考虑的就很多了。</p>
-<h5 id="递归的意义"><a href="#递归的意义" class="headerlink" title="递归的意义"></a>递归的意义</h5><p>递归就是调用自己本身,递归类似套娃循环也有深度一说，且深度过大会导致栈溢出问题。</p>
-<p>它主要由两部分组成：</p>
-<ul>
-<li>递归的递，把东西传递到最深度。</li>
-<li>递归的归，把东西从最深处加工后送出来。</li>
-</ul>
-<p>就和工厂里某个产品的制作工序一样。放入原料，送入机器最里层，从里到外逐层加工。</p>
-<p>但是必须要有结束条件，如果没有结束条件，他会一直运行下去。</p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">recur</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 这个是终止条件</span></span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 把原料送进去</span></span><br><span class="line">    <span class="type">int</span> res = <span class="built_in">recur</span>(n - <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 加工后吐出成品</span></span><br><span class="line">    <span class="keyword">return</span> n + res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.freeimg.cn/i/2024/06/27/667d58335bf11.png"
-                      alt="步进过程图"
-                ><figcaption>步进过程图</figcaption></figure></p>
-<h5 id="调用栈操作"><a href="#调用栈操作" class="headerlink" title="调用栈操作"></a>调用栈操作</h5><p>函数在没有返回最终结果之前，每一层都会占用内存。这个占用叫栈帧空间，函数最终返回后释放。</p>
-<p>因为栈分到的内存是有限的，如果占满了就栈溢出了。</p>
-<h5 id="尾递归使用"><a href="#尾递归使用" class="headerlink" title="尾递归使用"></a>尾递归使用</h5><p>如果函数在返回前的最后一句才调用，也就是把递归写在return里，就可以被软件(编译器)优化。从而节省了开销。(其实没用，大部分软件没法优化，仅是理论上而言)</p>
-<p>而普通递归呢，就是写在return前面，会捞一点，因为要先操作(递)，在返回过程中(归)还要操作。不如尾递归，它只要操作后(递)直接返回就行，不用额外操作。</p>
-<h5 id="递归树使用"><a href="#递归树使用" class="headerlink" title="递归树使用"></a>递归树使用</h5><p>其实递归的本质就是把大东西切分成小东西。和把问题简单化的分治一致。</p>
-<p>就和斐波那契数列一样，因为第n项是由前两项的和而来的，所以是两条分支。</p>
-<p>而这两条分支的子节点又是由前两项的和而来的，所以又可以分成两条支线，最后变成一棵庞大的树。</p>
-<p><em>其实，这棵树不仅是递归树，我感觉还是满二叉树？</em></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.hello-algo.com/chapter_computational_complexity/iteration_and_recursion.assets/recursion_tree.png"
-                      alt="斐波那契数列的递归树"
-                ><figcaption>斐波那契数列的递归树</figcaption></figure></p>
-<h4 id="迭代-递归对比"><a href="#迭代-递归对比" class="headerlink" title="迭代&#x2F;递归对比"></a>迭代&#x2F;递归对比</h4><p>其实两个之间也差不多。</p>
-<p><strong>迭代和递归区别:</strong></p>
-<ul>
-<li>①迭代没有调用的开销；递归每次调用都有时间开销。</li>
-<li>②迭代有固定调用次数；递归不确定，按深度计算。可能非常大.</li>
-</ul>
-<p>书籍上还提到了递归和栈之间的联系。说什么先入后出和栈帧这种难懂的东西。</p>
-<p>我的理解是就像一个车床要加工木棍，你得先把原材料(一根木头)放进去。</p>
-<p>放进去的过程中木棒会占用车床的内部空间，也就是逐渐开辟内存的过程。同时这也是”递”的过程。</p>
-<p>然后机器会开始加工。这时候原来放进去的”头”就会变成”尾”。且加工途中不会返回去处理处理好的部分。</p>
-<p>加工完毕以后需要把产物退回。这时车床的内部空间就被腾出来了。即逐渐恢复内存空间的过程，同时这也是”归”的过程。</p>
-<p>因为车床底部是封死的，不是中空的。所以这种工作机制也就是“先入后出”。(中空的”先入先出”为队列)</p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://img.picui.cn/free/2024/06/29/667f82c2c551b.jpg"
-                      alt="递归和栈之间的联系"
-                ><figcaption>递归和栈之间的联系</figcaption></figure></p>
-<hr>
-<h3 id="总结和结语"><a href="#总结和结语" class="headerlink" title="总结和结语"></a>总结和结语</h3>
-  <div class="note-large green">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>文章结语</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>让我成为你的双眼，把那世界万千，描绘在你面前。</strong><br>　　　　　　　　　　　　　　　　　　　　<em>——狐妖小红娘</em></p>
-
-    </div>
-  </div>
-
-<hr>
-<p><strong>笔记完毕 编辑完毕时间CST 6.28 02:51</strong></p>
-<p>最后修改于8.15 00:30</p>
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-        <category>&lt;Hello!算法&gt;笔记</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-        <tag>计算机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>每日一题#1 [位运算]</title>
-    <url>/everyday-quizs/everyquiz-1/</url>
-    <content><![CDATA[
-  <div class="note-large pink">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>寄语</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>时光流转，愿你终有一天能和你重要的人重逢。</strong><br> 　　　　　　　　  <em>——艾拉《可塑性记忆》</em></p>
-
-    </div>
-  </div>
-
-<hr>
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>从今天开始会写blog，主要是记笔记以防后期忘记，同时也会记一些重要的知识点。</strong></p>
-<p><strong>好了，让我们开始吧。</strong>(纯小白，大佬轻喷)</p>
-<hr>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣签到题为<a href="https://leetcode.cn/problems/single-number-iii/description/"><em>260. 只出现一次的数字 III</em></a>，题目如下：</p>
-<blockquote>
-<p>给你一个整数数组 <code>nums</code>，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 <strong>任意顺序</strong> 返回答案。</p>
-<p>你必须设计并实现线性时间复杂度的算法且仅使用常量额外空间来解决此问题。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：nums = [1,2,1,3,2,5]</span><br><span class="line">输出：[3,5]</span><br><span class="line">解释：[5, 3] 也是有效的答案。</span><br></pre></td></tr></table></figure></div>
-</blockquote>
-<p>看到这道题，我脑子里第一个想法就是用ide的内置函数 <del>(开摆)</del> 。</p>
-<p>在C#中有个叫count()的函数，它的功能是<strong>计算序列中的元素数量</strong>。<br>如果不填参数，将返回元素的个数。</p>
-<p>若填写参数，这个函数的功能就会变成<strong>计算序列中满足某个条件时的元素数量</strong>。<br>这个时候，我就可以用这个函数来寻找需要的结果。</p>
-<hr>
-<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：内置函数"><a href="#方法一：内置函数" class="headerlink" title="方法一：内置函数"></a>方法一：内置函数</h4><p>代码如下 :  <strong><code>时间复杂度：O(n)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span>[] <span class="title">SingleNumber</span>(<span class="params"><span class="built_in">int</span>[] nums</span>)</span> &#123;</span><br><span class="line">　<span class="built_in">int</span>[] answer = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];</span><br><span class="line">　<span class="built_in">int</span> j = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">//遍历整个数组并找到只出现一次的值</span></span><br><span class="line">　<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; nums.Length; i++) &#123;</span><br><span class="line">　　<span class="built_in">int</span> count = nums.Count(n =&gt; n == nums[i]);</span><br><span class="line">    <span class="comment">//有则存入answer数组</span></span><br><span class="line">　　<span class="keyword">if</span>(count == <span class="number">1</span>) &#123;</span><br><span class="line">　　　answer[j] = nums[i];</span><br><span class="line">　　　j++;</span><br><span class="line">　　&#125;</span><br><span class="line">　&#125;</span><br><span class="line">　<span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>这里使用了内置函数，让系统帮我找，也没什么好说的。</p>
-
-  <div class="note p-4 mb-4 rounded-small warning">
-    <p>非常耗时间 <strong><code>(2748ms)</code></strong> 和空间 <strong><code>(44.10MB)</code></strong></p>
-
-  </div>
-
-<hr>
-<h4 id="方法二：哈希集合"><a href="#方法二：哈希集合" class="headerlink" title="方法二：哈希集合"></a>方法二：哈希集合</h4><p>基于内置函数真的太慢的情况下，我想了一个别的方法。</p>
-<p>我采用了哈希集合，它采用了一种<strong>数据结构</strong>来存储数字频率，如果要查询频率，它完全可以在<strong>常数时间内</strong>返回结果。</p>
-<p>所以先创建一个哈希集合，如果在这个哈希集合中<strong>能找到</strong>这个数字，则说明这个数字出现了<strong>两次</strong>；反之如果没寻找到，则说明这个数字只出现了<strong>一次</strong>。</p>
-<p>代码如下 :  <strong><code>时间复杂度：O(n)</code></strong> <strong><code>空间复杂度：O(n)</code></strong></p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span>[] <span class="title">SingleNumber</span>(<span class="params"><span class="built_in">int</span>[] nums</span>)</span> &#123;</span><br><span class="line">　HashSet&lt;<span class="built_in">int</span>&gt; numsCounts = <span class="keyword">new</span>();</span><br><span class="line">　<span class="comment">//遍历整个数组</span></span><br><span class="line">　<span class="keyword">foreach</span> (<span class="built_in">int</span> i <span class="keyword">in</span> nums) &#123;</span><br><span class="line">　　<span class="comment">//如果在集合中找到了重复元素，就把它剔除；如果没找到就添加进去</span></span><br><span class="line">　　<span class="keyword">if</span>(numsCounts.Contains(i))</span><br><span class="line">　　　numsCounts.Remove(i);</span><br><span class="line">　　<span class="keyword">else</span></span><br><span class="line">　　　numsCounts.Add(i);</span><br><span class="line">　　&#125;</span><br><span class="line">　<span class="comment">//以数组形式返回</span></span><br><span class="line">　<span class="keyword">return</span> numsCounts.ToArray();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>优化</p>
-
-    </div>
-    <div class="notel-content">
-      <p>因为哈希集合是不包含<strong>重复</strong>元素的集合，所以如果有重复元素添加时他会<strong>跳过</strong>。<br>Add方法中，如果添加的元素是重复的，他不会添加，只会返回一个false，告诉你添加失败</p>
-
-    </div>
-  </div>
-
-<p>所以就可以用这个性质对 <code>Foreach</code>进行优化，把循环内的代码变成只有一个if判断</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若添加失败(有重复)则把这个数字剔除</span></span><br><span class="line"><span class="keyword">if</span>(!numsCounts.Add(i))</span><br><span class="line">      numsCounts.Remove(i);</span><br></pre></td></tr></table></figure></div>
-
-<p>通过这种方法得出的结果和优化前差不多，但是更简洁。</p>
-
-  <div class="note p-4 mb-4 rounded-small warning">
-    <p>通过这种方法得出的结果，耗时 <strong><code>(152ms)</code></strong> 和空间 **<code>(42.55MB)</code>**。</p>
-
-  </div>
-
-<hr>
-<h4 id="方法三：位运算"><a href="#方法三：位运算" class="headerlink" title="方法三：位运算"></a>方法三：位运算</h4><p>因为这个题目的标签里面有<strong>位运算</strong>，所以我一直在想怎么用，但是一整天都没想出来。</p>
-<p>怎么办呢？那只好去翻翻题解了。</p>
-
-  <div class="note p-4 mb-4 rounded-small info">
-    <p>X⊕X&#x3D;0(相同数字会抵消) 　　　 　　 0⊕X&#x3D;X(0与某数异或等于那个数)</p>
-
-  </div>
-
-<p>异或运算的原理如上所示，现在将所有数字异或，必定得到一个<strong>不为0</strong>的数。</p>
-<p>若输入为 <code>[1, 2, 1, 3, 2, 5]</code>，则他们的异或结果应该是3^5(这两个数字就是我们要求的答案)</p>
-<p>然后将这个得出来的数的<strong>补码</strong>(一种负数二进制形式)和它自己(也就是刚刚异或的结果)进行<strong>与运算</strong>。</p>
-<p>这样可以得到只有最低位是1的二进制码，这个位就是两个只出现一次的数字在二进制表示上的差异。</p>
-<p>以下为步骤表格：看表格，3和5从右往左第一个差异是不是<strong>第二位</strong>不一样？所以<strong>异或结果的补码</strong>只有第二位为1。</p>
-<blockquote>
-<table>
-<thead>
-<tr>
-<th>步骤&#x2F;数字</th>
-<th>3</th>
-<th>5</th>
-<th>3^5</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>二进制码</td>
-<td>011</td>
-<td>101</td>
-<td>110</td>
-</tr>
-<tr>
-<td>反码</td>
-<td>100</td>
-<td>010</td>
-<td>001</td>
-</tr>
-<tr>
-<td>补码</td>
-<td>101</td>
-<td>011</td>
-<td>010</td>
-</tr>
-</tbody></table>
-</blockquote>
-<p>现在就可以对原数组的每一个数进行<strong>与运算</strong>后分类，有0的分为一组，有1的分为一组。</p>
-<p>以下是分类结果：针对输入为 <code>[1, 2, 1, 3, 2, 5]</code>的为例</p>
-<ul>
-<li>1：2, 2, 3</li>
-<li>0：1, 1, 5</li>
-</ul>
-<p>经过”分治”的过程，问题转化成了简单的 **<code>&quot;在偶数次数字里找到只出现一次的元素&quot;</code>**。</p>
-<p>现在只要遵循异或的运算规则，将一个类总的所有元素全部<strong>异或</strong>，偶数次的元素会被<strong>相互抵消</strong>，然后就会剩下只出现一次的元素了。</p>
-<p>代码如下 :  <strong><code>时间复杂度：O(n)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span>[] <span class="title">SingleNumber</span>(<span class="params"><span class="built_in">int</span>[] nums</span>)</span> &#123;</span><br><span class="line">　<span class="comment">//定义</span></span><br><span class="line">　<span class="built_in">int</span> numsxor = <span class="number">0</span>;</span><br><span class="line">　<span class="built_in">int</span>[] res = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>];</span><br><span class="line">　<span class="comment">//所有元素异或</span></span><br><span class="line">　<span class="keyword">foreach</span> (<span class="built_in">int</span> num <span class="keyword">in</span> nums)</span><br><span class="line">　　numsxor ^= num;</span><br><span class="line">　<span class="comment">//异或结果和补码与运算，得到最低位为1的二进制码</span></span><br><span class="line">　<span class="comment">//就是取最右边的那个1，这个1保留，其他全改成0</span></span><br><span class="line">　<span class="built_in">int</span> answer = numsxor &amp; (-numsxor);</span><br><span class="line">　<span class="comment">//用这个码对数组分类</span></span><br><span class="line">　<span class="keyword">foreach</span> (<span class="built_in">int</span> num <span class="keyword">in</span> nums)</span><br><span class="line">　&#123;</span><br><span class="line">　　<span class="comment">//全部异或抵消得到结果</span></span><br><span class="line">　　<span class="keyword">if</span> ((answer &amp; num) == <span class="number">0</span>)</span><br><span class="line">　　　res[<span class="number">0</span>] ^= num;</span><br><span class="line">　　<span class="keyword">else</span></span><br><span class="line">　　　res[<span class="number">1</span>] ^= num;</span><br><span class="line">　&#125;</span><br><span class="line">　<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>通过这种方法得出的结果，耗时 <strong><code>(132ms)</code></strong> 和空间 **<code>(42.39MB)</code>**。</p>
-<hr>
-<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3><p>今天是第一天哦，希望自己能坚持下去。</p>
-<hr>
-<p><strong>笔记完毕 编辑完毕时间CST 10.16 23:55</strong></p>
-]]></content>
-      <categories>
-        <category>每日一题</category>
-      </categories>
-      <tags>
-        <tag>计算机</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>每日一题#2</title>
-    <url>/everyday-quizs/everyquiz-2/</url>
-    <content><![CDATA[
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>文章寄语</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>请别在意。我是旅人，得继续旅行才行。</strong><br> 　　　　　<em>——伊蕾娜《魔女之旅》</em></p>
-
-    </div>
-  </div>
-
-<hr>
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>每日一题的记录点</strong>。鉴于今天的题目比较简单，所以内容可能较少。</p>
-<p><strong>好了，让我们开始吧。</strong></p>
-<hr>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣签到题为<a href="https://leetcode.cn/problems/sum-multiples/description/"><em>2652. 倍数求和</em></a>，题目如下：</p>
-<blockquote>
-<p>给你一个正整数 <code>n</code>，请你计算在 <code>[1，n]</code>范围内能被 <code>3</code>、<code>5</code>、<code>7</code>整除的所有整数之和。</p>
-<p>返回一个整数，用于表示给定范围内所有满足约束条件的数字之和。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：n = 7</span><br><span class="line">输出：21</span><br><span class="line">解释：在 [1, 7] 范围内能被 3、5、7 整除的所有整数分别是 3、5、6、7 。数字之和为 21 。</span><br></pre></td></tr></table></figure></div>
-</blockquote>
-<p>看到这里，想出枚举法，即遍历数字后找出对应满足条件的数字。再看看范围，n在 <code>1~1000</code>之间，直接进行一个使用。</p>
-<hr>
-<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：枚举遍历"><a href="#方法一：枚举遍历" class="headerlink" title="方法一：枚举遍历"></a>方法一：枚举遍历</h4><p>代码如下 :  <strong><code>时间复杂度：O(n)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SumOfMultiples</span>(<span class="params"><span class="built_in">int</span> n</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//遍历，找出所有3,5,7倍数的数字后累加</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span> || i % <span class="number">5</span> == <span class="number">0</span> || i % <span class="number">7</span> == <span class="number">0</span>)</span><br><span class="line">            ans += i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure></div>
-
-<p>没什么好说的，基础的思路。耗费时间 <strong><code>(16ms)</code></strong> 和空间 **<code>(25.40MB)</code>**。</p>
-<hr>
-<h4 id="方法二：数学思想"><a href="#方法二：数学思想" class="headerlink" title="方法二：数学思想"></a>方法二：数学思想</h4><p> 看了题解研究了半天，终于知道怎么把时间复杂度降为O(1)了。只能说这个方法很巧妙。</p>
-<p> 如果说输入的数是 <code>n=20</code>时，可以先把答案(也就是3,5,7的倍数的数)挑出来讨论：</p>
-<blockquote>
-<ul>
-<li>3的倍数: 3, 6, 9, 12, 15, 18</li>
-<li>5的倍数: 5, 10, 15, 20</li>
-<li>7的倍数: 7, 14</li>
-</ul>
-</blockquote>
-<p>这些就是答案，然后会发现这是<strong>等差数列</strong>。既然是等差数列，当然就可以用等差数列的求和公式来计算他们的和。</p>
-
-  <div class="note p-4 mb-4 rounded-small tip">
-    <p><em>一个等差数列的和</em> &#x3D; ( 首项 + 末项 ) * 项数 &#x2F; 2</p>
-
-  </div>
-
-<p>现在我们有了首项(求几的倍数就是几)，那末项和项数呢?</p>
-<p>这就可以用 <code>n/首项</code>来得出 <code>n</code>范围内<strong>最大的</strong>元素数量了(就是项数)，然后再用这个结果<strong>乘以</strong>其首项，即为不大于n的最大倍数结果。比如 <code>n=20</code>时，<code>20/3=6</code>，则6即为项数，而 <code>6*3=18</code>即为末项。</p>
-<p>现在我们可以正常使用等差公式了，首项为 <code>n</code>，末项为 <code>(n/首项)*首项</code>，项数为 <code>n/首项</code>。</p>
-<p>为了方便我们将 <code>n/首项</code>记为 <code>counts</code>。这样就可以算了。现在公式变成了以下这个：</p>
-
-  <div class="note p-4 mb-4 rounded-small tip">
-    <p><em>一个等差数列的和</em> &#x3D; ( 首项 + counts * 首项 ) * counts &#x2F; 2</p>
-
-  </div>
-
-<p>如果传入两个数，分别是首项和n，记为a和b的话，代码应该这样：</p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//sum函数即为我们要求的这个等差数列的和</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Sum</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> counts = b / a;</span><br><span class="line">    <span class="built_in">int</span> result = (a + counts * a) * counts / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>现在传入 <code>3，5，7</code>和n就可以了。</p>
-
-  <div class="note-large red">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p><em><strong>注意：</strong></em></p>
-
-    </div>
-    <div class="notel-content">
-      <ul>
-<li>末项求值时，不能对这个算式进行<strong>化简</strong>,因为它是取整过的数，而且他的目的仅仅是找到小于n的最大倍数。</li>
-<li>两者本质<strong>完全不同</strong>，即使是换成高精度的浮点计算也不行。</li>
-</ul>
-
-    </div>
-  </div>
-
-<p>然后按照小学的知识，比如这个：</p>
-
-  <div class="note-large default">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <i class="notel-icon fa-solid fa-info"></i><p>小学例题</p>
-
-    </div>
-    <div class="notel-content">
-      <blockquote>
-<p><strong>喜欢数学的有10人 喜欢英语的有5人 喜欢科学的有12人</strong></p>
-<p><strong>同时喜欢数学和英语的有2人 英语和科学的有2人 数学和科学的有5人</strong></p>
-<p><strong>三门学科同时喜欢的有1人</strong></p>
-<p>现在问你只喜欢一门学科的人有多少？</p>
-</blockquote>
-
-    </div>
-  </div>
-
-<p>这就是<strong>容斥定理</strong>的简单应用，这个题只要把一门学科的<strong>全加</strong>起来，减去两门学科<strong>重叠</strong>的人数。因为三门学科的人在做差的时候被减去了两次，所以要把他<strong>加</strong>回来。所以这个问题的答案就是 <code>10+5+12-2-2-5+1=19人</code>。</p>
-<p>所以这个程序也是一样的道理，把 <code>3，5，7</code>的倍数加起来，减去两两倍数的乘积，然后再把三个数的乘积(105)加回去，就是最终的答案了。</p>
-<p>代码如下 :  <strong><code>时间复杂度：O(1)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//sum函数即为我们要求的这个等差数列的和</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Sum</span>(<span class="params"><span class="built_in">int</span> a, <span class="built_in">int</span> b</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> counts = b / a;</span><br><span class="line">    <span class="built_in">int</span> result = (a + a * counts) * counts / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//主函数，用容斥定理求出最终的结果</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SumOfMultiples</span>(<span class="params"><span class="built_in">int</span> n</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> result = Sum(<span class="number">3</span>, n) + Sum(<span class="number">5</span>, n) + Sum(<span class="number">7</span>, n) - Sum(<span class="number">15</span>, n) - Sum(<span class="number">21</span>, n) - Sum(<span class="number">35</span>, n) + Sum(<span class="number">105</span>, n);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>通过这种方法得出的结果，耗时 <strong><code>(20ms)</code></strong> 和空间 **<code>(25.37MB)</code>**。</p>
-<p>虽然耗时和空间差不了多少，但是这个时间复杂度是O(1)。<del>比前面那个高级</del></p>
-<hr>
-<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3><p>暂无留言</p>
-<hr>
-<p><strong>笔记完毕 编辑完毕时间CST 10.17 23:44</strong></p>
-]]></content>
-      <categories>
-        <category>每日一题</category>
-      </categories>
-      <tags>
-        <tag>计算机</tag>
-        <tag>算法</tag>
-        <tag>C#学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>每日一题#3</title>
-    <url>/everyday-quizs/everyquiz-3/</url>
-    <content><![CDATA[
-  <div class="note-large blue">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>文章寄语</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>其实美丽的故事都是没有结局的，只因为它没有结局所以才会美丽。</strong><br>　　　　　　　　　　　　　　　　　　　　<em>——《萤火之森》</em></p>
-
-    </div>
-  </div>
-
-<hr>
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>每日一题的记录点</strong>.以后仅把我觉得有意思的题写成博客,而不是每道题都写了.</p>
-<p><strong>好了，让我们开始吧。</strong></p>
-<hr>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天的力扣题为 <a href="https://leetcode.cn/problems/search-insert-position/description/"><em>35.搜索插入位置</em></a>，题目如下：</p>
-<blockquote>
-<p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。<br>如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入: nums = [1,3,5,6], target = 5</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure></div>
-</blockquote>
-<p>有序数组；搜索，立马想出二分查找法。再看看题目范围和提示：”<code>nums</code>为<strong>无重复元素</strong>的<strong>升序</strong>排列数组”，这下我们还可以使用内置函数进行解决。</p>
-<hr>
-<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：内置函数"><a href="#方法一：内置函数" class="headerlink" title="方法一：内置函数"></a>方法一：内置函数</h4><p>在C#中，有很多可以排序的数据类型，这里仅仅只需要使用<strong>列表</strong>就足够了。而且这道题无非就是两个子问题：</p>
-<blockquote>
-<ul>
-<li>如果原有数组中存在该数，则返回其索引。</li>
-<li>如果原有数组中不存在该数，则返回其应该被插入的位置。</li>
-</ul>
-</blockquote>
-<p>所以我们先把这个数组转换成列表，查找有无该数。如果没有，就把它放到列表里，然后排序后输出索引。</p>
-<p>因为我们把它转换成了一个新的数据类型列表，所以占用了n位列表的空间，空间复杂度是O(n)。</p>
-<p>代码如下 :  <strong><code>时间复杂度：O(nlogn)</code></strong> <strong><code>空间复杂度：O(n)</code></strong></p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SearchInsert</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//数组转列表</span></span><br><span class="line">    List&lt;<span class="built_in">int</span>&gt; sorted = nums.ToList();</span><br><span class="line">    <span class="comment">//如果存在就返回索引 indexof时返回索引的函数</span></span><br><span class="line">    <span class="keyword">if</span> (sorted.Contains(target))</span><br><span class="line">        <span class="keyword">return</span> sorted.IndexOf(target);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//不存在就加入 排序并输出最后的索引</span></span><br><span class="line">        sorted.Add(target);</span><br><span class="line">        <span class="comment">//因为内置排序函数用了快速排序，所以时间复杂度是nlogn</span></span><br><span class="line">        sorted.Sort();</span><br><span class="line">        <span class="keyword">return</span> sorted.IndexOf(target);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>通过这种方法得出的结果，耗时 <strong><code>(76ms)</code></strong> 和空间 **<code>(38.13MB)</code>**。</p>
-<p>这里使用了内置函数，让系统帮我找，平时用挺好。但是如果这道题用这个，做这道题的意义就没有了。</p>
-<p><em><del>但是这串代码仍然有他的优化版本，用内置的二分搜索即可办到，这里就不展示了</del></em></p>
-<p><del>所以为了体现这道题的实际意义</del>  我按照正规做法做了一遍。</p>
-<hr>
-<h4 id="方法二：二分运算"><a href="#方法二：二分运算" class="headerlink" title="方法二：二分运算"></a>方法二：二分运算</h4><p>所谓二分运算，就是把东西一分为二，具体二分细节可以去网上搜。<del>懒的写了</del></p>
-<p>一般就是先在<strong>有序</strong>数组的<strong>最开始</strong>和<strong>最末尾</strong>设定两个扫描头，然后把左边和右边加起来除以二，也就是取<strong>中点</strong>。然后我们判断，如果这个数大于这个中点，说明在右半边，然后我们扔掉左半边不要的，循环反复。反之就扔掉右半边。</p>
-<p>对于这道题来讲的话，和二分没差，都是用<strong>同一个</strong>模板。</p>
-<p>只不过有一点不一样，如果数组中不存在这个数，我们需要返回的是不大于这个数的最大的数的索引，这个就是他需要被插入的位置。而不是那个中点 <code>mid</code>了</p>
-<p>因为这里没有开辟新的类型和新的数组，所以只占用了常数量级空间，空间复杂度是O(1)。</p>
-<p>代码如下 :  <strong><code>时间复杂度：O(logn)</code></strong> <strong><code>空间复杂度：O(1)</code></strong></p>
-<div class="highlight-container" data-rel="Csharp"><figure class="iseeu highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">SearchInsert</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//在开头和结尾定义扫描头</span></span><br><span class="line">    <span class="built_in">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">int</span> right = nums.Length - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//设定约束条件</span></span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//这句话在下面着重讲一下</span></span><br><span class="line">        <span class="built_in">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//如果这个数字在数组中存在就返回他的索引</span></span><br><span class="line">        <span class="keyword">if</span> (target == nums[mid])</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="comment">//不然就按照二分模板，在左边扔掉右边，在右边扔掉左边</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (target &lt;= nums[mid])</span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果这个数字在数组中不存在就返回他的插入位置靠左的索引</span></span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>说一下前面提到的 <code>left+(right-left)/2</code>，这是一种防止溢出的手段，如果数字太大，加起来可能会爆 <code>int</code>的范围，所以就这么写。这么写和 <code>(left+right)/2</code>相同。<del>具体什么原理我也不太清楚。</del></p>
-<p>如果想更简便的话，可以把 <code>x/2</code>变成位运算 <code>x&gt;&gt;1</code>，更有效率。</p>
-<p>通过这种方法得出的结果，耗时 <strong><code>(84ms)</code></strong> 和空间 **<code>(37.59MB)</code>**。</p>
-<hr>
-<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3><p>该摸鱼了。</p>
-<hr>
-<p><strong>笔记完毕 编辑完毕时间CST 10.25 23:26</strong></p>
-]]></content>
-      <categories>
-        <category>每日一题</category>
-      </categories>
-      <tags>
-        <tag>计算机</tag>
-        <tag>算法</tag>
-        <tag>C#学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>刷题笔记#4——数列排列数论</title>
-    <url>/everyday-quizs/everyquiz-4/</url>
-    <content><![CDATA[
-  <div class="note-large orange">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>文章寄语</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>在末日中，人们总想寻找希望，但要真有希望的话，那还叫末日吗？</strong><br>　　　　　　　　　　　　　　　　　　　　<em>——《灵笼》</em></p>
-
-    </div>
-  </div>
-
-<hr>
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p><strong>现在起每日一题更名为刷题笔记</strong> </p>
-<p>好久没写笔记了，加上最近比较空遂用hexo的主题搭了一个开源博客，以后有什么都会写在这里。</p>
-<hr>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>今天要记录的题目是 <a href="https://leetcode.cn/problems/can-make-arithmetic-progression-from-sequence/description/"><em>1502. 判断能否形成等差数列</em></a></p>
-<blockquote>
-<p>给你一个数字数组arr 。<br>如果一个数列中，任意相邻两项的差总等于同一个常数，那么这个数列就称为等差数列<br>如果可以重新排列数组形成等差数列，请返回 true否则，返回 false</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入: arr = [3,5,1]</span><br><span class="line">输出: true</span><br><span class="line">解释：对数组重新排序得到[1,3,5]或者[5,3,1]，任意相邻两项的差分别为2或-2，可以形成等差数列。</span><br></pre></td></tr></table></figure></div>
-</blockquote>
-<p>虽然这道题是简单题，但是有两种方法值得我们去思考。</p>
-<p>第一种是先排序后判断，也就是常规的思路。第二种是用数论的方法，可以直接判断，可以先判断在排序。</p>
-<hr>
-<h3 id="方法和思路"><a href="#方法和思路" class="headerlink" title="方法和思路"></a>方法和思路</h3><h4 id="方法一：先排序后判断-模拟"><a href="#方法一：先排序后判断-模拟" class="headerlink" title="方法一：先排序后判断(模拟)"></a>方法一：先排序后判断(模拟)</h4><p>因为等差数列，我们把它排好序后，是否等差我们一眼可知。</p>
-<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>我们可以直接使用c++的内置函数sort()进行排序，因为等差数列的条件是相邻两项的差总等于同一个常数。所以为我们在排序完成后，还需要遍历一遍数据。</p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canMakeArithmeticProgression</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//对数组进行排序</span></span><br><span class="line">        <span class="built_in">sort</span>(arr.<span class="built_in">begin</span>(), arr.<span class="built_in">end</span>());</span><br><span class="line">        <span class="comment">//遍历数组进行判断</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; arr.<span class="built_in">size</span>() - <span class="number">1</span>; ++i) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//如果中间项和左右两边的差值不是一个恒定的数，则不是等差数列，遂跳出</span></span><br><span class="line">            <span class="keyword">if</span> (arr[i] * <span class="number">2</span> != arr[i - <span class="number">1</span>] + arr[i + <span class="number">1</span>]) </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-
-<p><strong>因为排序的时间代价为O(nlog⁡n)，遍历序列的时间代价是 O(n)，故渐进时间复杂度为 O(nlog⁡n+n)&#x3D;O(nlog⁡n)</strong></p>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.freeimg.cn/i/2024/06/14/666c3fbd4d257.png"
-                      alt="我在c++没有写这个方法,因为我c#写过了(,所以贴张c#的图"
-                ><figcaption>我在c++没有写这个方法,因为我c#写过了(,所以贴张c#的图</figcaption></figure></p>
-<hr>
-<h4 id="方法二：直接判断且不需要排序-数论"><a href="#方法二：直接判断且不需要排序-数论" class="headerlink" title="方法二：直接判断且不需要排序(数论)"></a>方法二：直接判断且不需要排序(数论)</h4><p><strong>等差数列的成立条件如下：</strong></p>
-<ul>
-<li>①相邻两项的差值等于一个常数，也就是我们说的公差d</li>
-<li>②公差d必须为整数(仅对本题而言，因为输入是整数，公差不会是小数)</li>
-<li>③全部的项中不会存在重复的数据</li>
-<li>④公差d可以为0，也就是所有项都是同一个数</li>
-</ul>
-<h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>我们先对这个数列进行一次遍历，在题目所给的一串待处理数字中找到最大值和最小值。</p>
-<p>为什么要找这个最大值和最小值呢？我们假设这串数字就是等差数列，则这个最大值和最小值就是数列的末项和首项。</p>
-<p>知道了最大值和最小值，项数我们也知道了(输入几项就是几),我们可以套公式求出公差d。</p>
-<ul>
-<li>公差d &#x3D; (末项 - 首项)&#x2F;(项数 - 1)</li>
-</ul>
-<p><strong>现在公差d已经被算出来了，对算出来的这个公差d进行一次判断</strong></p>
-<ul>
-<li>若首项 &#x3D; 末项(最大值等于最小值)，说明数列每一项都一样，直接返回true，不用求出d。</li>
-<li>若公差是小数，则不满足成立条件②，直接返回false。</li>
-</ul>
-<p><strong>接下来我们倒序再次遍历一遍这个数列。求出每一项减去首项然后除以公差d的商。</strong></p>
-<p>为什么这么做？因为在一个真正的等差数列中，每一项减去首项的差，对于公差d都是成倍数关系的。</p>
-<ul>
-<li>等差数列通项公式：An &#x3D; 首项 + (第n项 - 1) * 公差d</li>
-</ul>
-<p>首项已经知道了，就是数组的最小值，公差我们也算出来了，An是第n项的值，也知道了。</p>
-<p>现在的目的就是试图求n，即这个数字在整个数列中的位次。</p>
-<p>但是因为有成立条件③的存在，直接判断会导致这个问题。所以我们开一个哈希集合，哈希集合不可以存放重复数据，正好可以判断。开其他的也可以。</p>
-<ul>
-<li>若n是小数，直接返回false。因为没有第小数项，除非他在另一个次元.返回false。</li>
-<li>若n在哈希中存在，说明数列内有重复，不满足条件③，返回false。</li>
-</ul>
-<p>若当前数字通过两者，都坚持下来了，说明这个数字独立，加入到集合里。查看下一个数字。</p>
-<p><strong>如果循环结束还没有返回false，说明数列满足等差数列成立的所有条件。它确实是等差数列。返回true。</strong></p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canMakeArithmeticProgression</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> arrlen = arr.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> min = <span class="number">1000001</span>;</span><br><span class="line">        <span class="type">int</span> max = <span class="number">-1000001</span>;</span><br><span class="line">        <span class="type">int</span> diff, result;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; numset;</span><br><span class="line">        <span class="comment">//有内置的函数可以直接取最大最小值，我这里没用</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= arrlen; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &lt; min)</span><br><span class="line">                min = arr[i];</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &gt; max)</span><br><span class="line">                max = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//公差为0时</span></span><br><span class="line">        <span class="keyword">if</span> (min == max)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//公差是小数，即无法整除</span></span><br><span class="line">        <span class="keyword">if</span> ((max - min) % arrlen != <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//求公差</span></span><br><span class="line">        diff = (max - min) / arrlen;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = arrlen; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//位次是小数</span></span><br><span class="line">            <span class="keyword">if</span> ((arr[i] - min) % diff != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                result = (arr[i] - min) / diff;</span><br><span class="line">                <span class="comment">//判断哈希表里是否已经存在数字</span></span><br><span class="line">                <span class="keyword">if</span>(numset.<span class="built_in">count</span>(result) == <span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="comment">//没有就插入这个数字</span></span><br><span class="line">                numset.<span class="built_in">insert</span>(result);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-<p><figure class="image-caption"><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.freeimg.cn/i/2024/06/14/666c4d7146040.png"
-                      alt="通过代码图"
-                ><figcaption>通过代码图</figcaption></figure></p>
-<h5 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h5><p>其实这道题到这里就结束了，都知道了这几个元素在排序后数列的确切位置。</p>
-<p>其实就可以反向排序了。</p>
-<hr>
-<h3 id="结语和留言"><a href="#结语和留言" class="headerlink" title="结语和留言"></a>结语和留言</h3>
-  <div class="note-large purple">
-    <div class="notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center">
-      <p>文章结语</p>
-
-    </div>
-    <div class="notel-content">
-      <p><strong>梦比现实更易侵蚀人的精神，刻意准备的梦是危险的。</strong><br>　　　　　　　　　　　　　　　　　　　　<em>——东方绀珠传 ~ Legacy of Lunatic Kingdom.</em></p>
-
-    </div>
-  </div>
-
-<hr>
-<p><strong>笔记完毕 编辑完毕时间CST 6.14 22:35</strong></p>
-<p>最后修改于8.15 00:20</p>
-]]></content>
-      <categories>
-        <category>每日一题</category>
-      </categories>
-      <tags>
-        <tag>计算机</tag>
-        <tag>算法</tag>
-        <tag>C++</tag>
       </tags>
   </entry>
 </search>
